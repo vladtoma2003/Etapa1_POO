@@ -1,13 +1,13 @@
-package Data;
+package fileio;
 
-public class Action {
+public final class Action {
     private String type;
     private String page;
     private String feature;
     private Credentials credentials;
     private String startsWith;
     private String count;
-    private int rate;
+    private Integer rate;
 
     public String getType() {
         return type;
@@ -57,11 +57,11 @@ public class Action {
         this.count = count;
     }
 
-    public int getRate() {
+    public Integer getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(Integer rate) {
         this.rate = rate;
     }
 }

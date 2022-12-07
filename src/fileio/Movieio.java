@@ -1,22 +1,14 @@
-package Data;
+package fileio;
 
 import java.util.ArrayList;
 
-public class Movie {
+public final class Movieio {
     private String name;
     private Integer year;
     private Integer duration;
     private ArrayList<String> genres;
     private ArrayList<String> actors;
     private ArrayList<String> countriesBanned;
-
-    public boolean equals(Movie obj) {
-        boolean a = true;
-        a &= obj.getName().equals(this.name);
-        a &= obj.getYear().equals(this.year);
-        a &= obj.getDuration().equals(this.duration);
-        return a;
-    }
 
     public String getName() {
         return name;
