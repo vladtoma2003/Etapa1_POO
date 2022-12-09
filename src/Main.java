@@ -2,8 +2,8 @@ import Data.DataBase;
 import Factory.MovieFactory;
 import Factory.UserFactory;
 import Pages.Page;
-import Visitor.acceptVisitor;
-import Visitor.visitor;
+//import Visitor.acceptVisitor;
+//import Visitor.visitor;
 import fileio.Input;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -31,10 +31,10 @@ public class Main {
         }
 
         for(Movieio movie:inputData.getMovies()) {
-            dataBase.getMovies().add(MovieFactory.newMovie(movie));
+            dataBase.getAvailableMovies().add(MovieFactory.newMovie(movie));
         }
 
-        acceptVisitor.accept(dataBase, currenPage, inputData, output);
+        Actions.Commands(dataBase, currenPage, inputData, output);
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(outPath), output);

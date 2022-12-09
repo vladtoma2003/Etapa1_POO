@@ -1,17 +1,21 @@
 package fileio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"intBalance"})
 public final class Credentials {
    private String name;
     private String password;
     private String accountType;
     private String country;
-    private Integer balance;
+    private String balance;
+    private Integer intBalance;
 
     public Credentials() {
 
     }
 
-    public Credentials(String name, String password, String accountType, String country, Integer balance) {
+    public Credentials(String name, String password, String accountType, String country, String balance) {
         this.name = name;
         this.password = password;
         this.accountType = accountType;
@@ -56,12 +60,20 @@ public final class Credentials {
         this.country = country;
     }
 
-    public Integer getBalance() {
+    public String getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(String balance) {
         this.balance = balance;
+    }
+
+    public Integer getIntBalance() {
+        return intBalance;
+    }
+
+    public void setIntBalance(Integer intBalance) {
+        this.intBalance = intBalance;
     }
 
     @Override
@@ -71,7 +83,8 @@ public final class Credentials {
                 ", password='" + password + '\'' +
                 ", accountType='" + accountType + '\'' +
                 ", country='" + country + '\'' +
-                ", balance=" + balance +
+                ", balance='" + balance + '\'' +
+                ", intBalance=" + intBalance +
                 '}';
     }
 }

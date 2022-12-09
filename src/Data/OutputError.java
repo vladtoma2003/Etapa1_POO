@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OutputError {
     private String error;
-    private ArrayList<Movie> currentMovieList;
+    private ArrayList<Movie> currentMoviesList;
     private User currentUser;
 
     public String getError() {
@@ -15,12 +15,12 @@ public class OutputError {
         this.error = error;
     }
 
-    public ArrayList<Movie> getCurrentMovieList() {
-        return currentMovieList;
+    public ArrayList<Movie> getCurrentMoviesList() {
+        return currentMoviesList;
     }
 
-    public void setCurrentMovieList(ArrayList<Movie> currentMovieList) {
-        this.currentMovieList = currentMovieList;
+    public void setCurrentMoviesList(ArrayList<Movie> currentMoviesList) {
+        this.currentMoviesList = currentMoviesList;
     }
 
     public User getCurrentUser() {

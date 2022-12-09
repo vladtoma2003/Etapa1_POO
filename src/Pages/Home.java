@@ -8,15 +8,14 @@ import fileio.Action;
 
 import java.util.Arrays;
 
-public class Register extends Page {
-    private final static String name = "register";
-    private final static String destinations[] = {};
-    private final static String actions[] = {"register"};
+public class Home extends Page{
+    private final static String name = "login";
+    private final static String destinations[] = {"movies", "upgrades", "logout"};
+    private final static String actions[] = {"login"};
 
     public boolean canDoAction(String action) {
         return Arrays.asList(actions).contains(action);
     }
-
     public boolean canGoThere(String destination) {
         return Arrays.asList(destinations).contains(destination);
     }
@@ -28,7 +27,6 @@ public class Register extends Page {
     public void acceptAction(VisitorAction visitor, DataBase dataBase, Page currentPage, Action action, ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, action, output);
     }
-
     @Override
     public String getName() {
         return name;

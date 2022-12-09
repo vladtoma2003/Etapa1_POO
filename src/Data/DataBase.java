@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class DataBase {
     private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<Movie> movies = new ArrayList<>();
+    private ArrayList<Movie> availableMovies = new ArrayList<>();
+    private ArrayList<Movie> currentMoviesList = new ArrayList<>();
     private User loggedUser = null;
-//    private ArrayList<Movie> currentMovieList;
 
     public boolean existsUser(User user) {
         return users.stream()
@@ -26,16 +26,8 @@ public class DataBase {
     }
 
     public boolean existsMovie(Movie movie) {
-        return movies.stream()
+        return currentMoviesList.stream()
                 .anyMatch(o ->o.equals(movie));
-    }
-
-    public User getLoggedUser() {
-        return loggedUser;
-    }
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
     }
 
     public ArrayList<User> getUsers() {
@@ -46,11 +38,27 @@ public class DataBase {
         this.users = users;
     }
 
-    public ArrayList<Movie> getMovies() {
-        return movies;
+    public ArrayList<Movie> getAvailableMovies() {
+        return availableMovies;
     }
 
-    public void setMovies(ArrayList<Movie> movies) {
-        this.movies = movies;
+    public void setAvailableMovies(ArrayList<Movie> availableMovies) {
+        this.availableMovies = availableMovies;
+    }
+
+    public ArrayList<Movie> getCurrentMoviesList() {
+        return currentMoviesList;
+    }
+
+    public void setCurrentMoviesList(ArrayList<Movie> currentMoviesList) {
+        this.currentMoviesList = currentMoviesList;
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 }

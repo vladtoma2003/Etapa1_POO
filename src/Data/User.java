@@ -2,70 +2,92 @@ package Data;
 
 import fileio.Credentials;
 
+import java.util.ArrayList;
+
 public class User {
-    private String name;
-    private String password;
-    private String accountType;
-    private String country;
-    private Integer balance;
+    Credentials credentials;
+    private Integer tokensCount;
+    private Integer numFreePremiumMovies;
+    ArrayList<Movie> purchasedMovies = new ArrayList<>();
+    ArrayList<Movie> watchedMovies = new ArrayList<>();
+    ArrayList<Movie> likedMovies = new ArrayList<>();
+    ArrayList<Movie> ratedMovies = new ArrayList<>();
 
     public boolean equals(User obj) {
-        return this.name.equals(obj.getName()) &&
-                this.password.equals(obj.getPassword());
+        return this.credentials.getName().equals(obj.getCredentials().getName()) &&
+                this.credentials.getPassword().equals(obj.getCredentials().getPassword());
     }
 
     public User() {
 
     }
 
-    public String getName() {
-        return name;
+    public Credentials getCredentials() {
+        return credentials;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getTokensCount() {
+        return tokensCount;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTokensCount(Integer tokensCount) {
+        this.tokensCount = tokensCount;
     }
 
-    public String getAccountType() {
-        return accountType;
+    public Integer getNumFreePremiumMovies() {
+        return numFreePremiumMovies;
     }
 
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
+    public void setNumFreePremiumMovies(Integer numFreePremiumMovies) {
+        this.numFreePremiumMovies = numFreePremiumMovies;
     }
 
-    public String getCountry() {
-        return country;
+    public ArrayList<Movie> getPurchasedMovies() {
+        return purchasedMovies;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPurchasedMovies(ArrayList<Movie> purchasedMovies) {
+        this.purchasedMovies = purchasedMovies;
     }
 
-    public Integer getBalance() {
-        return balance;
+    public ArrayList<Movie> getWatchedMovies() {
+        return watchedMovies;
     }
 
-    public void setBalance(Integer balance) {
-        this.balance = balance;
+    public void setWatchedMovies(ArrayList<Movie> watchedMovies) {
+        this.watchedMovies = watchedMovies;
+    }
+
+    public ArrayList<Movie> getLikedMovies() {
+        return likedMovies;
+    }
+
+    public void setLikedMovies(ArrayList<Movie> likedMovies) {
+        this.likedMovies = likedMovies;
+    }
+
+    public ArrayList<Movie> getRatedMovies() {
+        return ratedMovies;
+    }
+
+    public void setRatedMovies(ArrayList<Movie> ratedMovies) {
+        this.ratedMovies = ratedMovies;
     }
 
     @Override
     public String toString() {
-        return "Credentials{" +
-                "name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", accountType='" + accountType + '\'' +
-                ", country='" + country + '\'' +
-                ", balance=" + balance +
+        return "User{" +
+                "credentials=" + credentials +
+                ", tokensCount=" + tokensCount +
+                ", numFreePremiumMovies=" + numFreePremiumMovies +
+                ", purchasedMovies=" + purchasedMovies +
+                ", watchedMovies=" + watchedMovies +
+                ", likedMovies=" + likedMovies +
+                ", ratedMovies=" + ratedMovies +
                 '}';
     }
 }

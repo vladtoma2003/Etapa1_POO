@@ -8,10 +8,10 @@ import fileio.Action;
 
 import java.util.Arrays;
 
-public class Register extends Page {
-    private final static String name = "register";
+public class Logout extends Page {
+    private final static String name = "logout";
     private final static String destinations[] = {};
-    private final static String actions[] = {"register"};
+    private final static String actions[] = {"logout"};
 
     public boolean canDoAction(String action) {
         return Arrays.asList(actions).contains(action);
@@ -34,11 +34,5 @@ public class Register extends Page {
         return name;
     }
 
-    public String[] getDestinations() {
-        return destinations;
-    }
 
-    public String[] getActions() {
-        return actions;
-    }
 }

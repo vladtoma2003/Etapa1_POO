@@ -1,29 +1,53 @@
 [ {
-  "error" : "login: nu exista userparolamea",
-  "currentMovieList" : null,
+  "error" : "Error",
+  "currentMoviesList" : [ ],
   "currentUser" : null
 }, {
   "error" : null,
-  "currentMovieList" : null,
+  "currentMoviesList" : [ ],
   "currentUser" : {
-    "name" : "Ramsi",
-    "password" : "numiplacevelea",
-    "accountType" : "standard",
-    "country" : "Ireland",
-    "balance" : 300
+    "credentials" : {
+      "name" : "Ramsi",
+      "password" : "numiplacevelea",
+      "accountType" : "standard",
+      "country" : "Ireland",
+      "balance" : "300"
+    },
+    "tokensCount" : 0,
+    "numFreePremiumMovies" : 15,
+    "purchasedMovies" : [ ],
+    "watchedMovies" : [ ],
+    "likedMovies" : [ ],
+    "ratedMovies" : [ ]
   }
 }, {
-  "error" : "login: nu exista usernicigand",
-  "currentMovieList" : null,
+  "error" : "Error",
+  "currentMoviesList" : [ ],
+  "currentUser" : null
+}, {
+  "error" : "Error",
+  "currentMoviesList" : [ ],
+  "currentUser" : null
+}, {
+  "error" : "Error",
+  "currentMoviesList" : [ ],
   "currentUser" : null
 }, {
   "error" : null,
-  "currentMovieList" : null,
+  "currentMoviesList" : [ ],
   "currentUser" : {
-    "name" : "Eduard",
-    "password" : "secret",
-    "accountType" : "standard",
-    "country" : "Romania",
-    "balance" : 50
+    "credentials" : {
+      "name" : "Eduard",
+      "password" : "secret",
+      "accountType" : "standard",
+      "country" : "Romania",
+      "balance" : "50"
+    },
+    "tokensCount" : 0,
+    "numFreePremiumMovies" : 15,
+    "purchasedMovies" : [ ],
+    "watchedMovies" : [ ],
+    "likedMovies" : [ ],
+    "ratedMovies" : [ ]
   }
 } ]
