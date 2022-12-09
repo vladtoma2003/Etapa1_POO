@@ -1,4 +1,4 @@
-package Data;
+package Pages;
 
 public class Page {
     private String name = "start";

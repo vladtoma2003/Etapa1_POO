@@ -1,1 +1,29 @@
-[ ]
+[ {
+  "error" : "login: nu exista userparolamea",
+  "currentMovieList" : null,
+  "currentUser" : null
+}, {
+  "error" : null,
+  "currentMovieList" : null,
+  "currentUser" : {
+    "name" : "Ramsi",
+    "password" : "numiplacevelea",
+    "accountType" : "standard",
+    "country" : "Ireland",
+    "balance" : 300
+  }
+}, {
+  "error" : "login: nu exista usernicigand",
+  "currentMovieList" : null,
+  "currentUser" : null
+}, {
+  "error" : null,
+  "currentMovieList" : null,
+  "currentUser" : {
+    "name" : "Eduard",
+    "password" : "secret",
+    "accountType" : "standard",
+    "country" : "Romania",
+    "balance" : 50
+  }
+} ]

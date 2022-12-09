@@ -1,7 +1,5 @@
 package Pages;
 
-import Data.Page;
-
 import java.util.Arrays;
 
 public class Login extends Page {

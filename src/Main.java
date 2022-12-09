@@ -1,6 +1,9 @@
 import Data.DataBase;
 import Factory.MovieFactory;
 import Factory.UserFactory;
+import Pages.Page;
+import Visitor.acceptVisitor;
+import Visitor.visitor;
 import fileio.Input;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -10,6 +13,7 @@ import fileio.Userio;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -19,6 +23,7 @@ public class Main {
         Input inputData = objectMapper.readValue(new File(inPath), Input.class);
         ArrayNode output = objectMapper.createArrayNode();
 
+        Page currenPage = new Page();
 
         DataBase dataBase = new DataBase();
         for(Userio user:inputData.getUsers()) {
@@ -28,6 +33,8 @@ public class Main {
         for(Movieio movie:inputData.getMovies()) {
             dataBase.getMovies().add(MovieFactory.newMovie(movie));
         }
+
+        acceptVisitor.accept(dataBase, currenPage, inputData, output);
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(outPath), output);
