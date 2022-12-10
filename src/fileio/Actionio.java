@@ -1,6 +1,6 @@
 package fileio;
 
-public final class Action {
+public final class Actionio {
     private String type;
     private String page;
     private String feature;
@@ -8,6 +8,8 @@ public final class Action {
     private String startsWith;
     private String count;
     private Integer rate;
+    private Filterio filters;
+    private String movie;
 
     public String getType() {
         return type;
@@ -63,5 +65,21 @@ public final class Action {
 
     public void setRate(Integer rate) {
         this.rate = rate;
+    }
+
+    public Filterio getFilters() {
+        return filters;
+    }
+
+    public void setFilters(Filterio filters) {
+        this.filters = filters;
+    }
+
+    public String getMovie() {
+        return movie;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
     }
 }

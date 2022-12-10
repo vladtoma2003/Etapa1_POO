@@ -10,12 +10,42 @@ public class Movie {
     private ArrayList<String> actors;
     private ArrayList<String> countriesBanned;
 
+    private Integer numLikes;
+    private Integer numRatings;
+    private Double rating;
+
     public boolean equals(Movie obj) {
         boolean a = true;
         a &= obj.getName().equals(this.name);
         a &= obj.getYear().equals(this.year);
         a &= obj.getDuration().equals(this.duration);
         return a;
+    }
+
+    public int compareTo(Movie o) {
+        if(this.compareRating(o) == 0) {
+            return this.compareDuration(o);
+        }
+        return this.compareRating(o);
+    }
+
+    public int compareRating(Movie o) {
+        if(rating > o.getRating()) {
+            return 1;
+        } else if(o.getRating() < rating) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    public int compareDuration(Movie o) {
+        if(duration > o.getDuration()) {
+            return 1;
+        } else if(o.getDuration() > duration) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
     public String getName() {
@@ -66,6 +96,30 @@ public class Movie {
         this.countriesBanned = countriesBanned;
     }
 
+    public Integer getNumLikes() {
+        return numLikes;
+    }
+
+    public void setNumLikes(Integer numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public Integer getNumRatings() {
+        return numRatings;
+    }
+
+    public void setNumRatings(Integer numRatings) {
+        this.numRatings = numRatings;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -75,6 +129,9 @@ public class Movie {
                 ", genres=" + genres +
                 ", actors=" + actors +
                 ", countriesBanned=" + countriesBanned +
+                ", numLikes=" + numLikes +
+                ", numRatings=" + numRatings +
+                ", rating=" + rating +
                 '}';
     }
 }

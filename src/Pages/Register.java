@@ -4,7 +4,7 @@ import Data.DataBase;
 import PageVisitor.VisitorAction;
 import PageVisitor.VisitorDestination;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import fileio.Action;
+import fileio.Actionio;
 
 import java.util.Arrays;
 
@@ -21,11 +21,11 @@ public class Register extends Page {
         return Arrays.asList(destinations).contains(destination);
     }
 
-    public void acceptDestination(VisitorDestination visitor, DataBase dataBase, Page currentPage, String Destination, ArrayNode output) {
+    public void acceptDestination(VisitorDestination visitor, DataBase dataBase, Page currentPage, Actionio Destination, ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, Destination, output);
     }
 
-    public void acceptAction(VisitorAction visitor, DataBase dataBase, Page currentPage, Action action, ArrayNode output) {
+    public void acceptAction(VisitorAction visitor, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, action, output);
     }
 

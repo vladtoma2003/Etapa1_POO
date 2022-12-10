@@ -12,56 +12,23 @@ import fileio.Input;
 public class Actions {
     public static void Commands (DataBase dataBase, Page currentPage, Input inputData, ArrayNode output){
         for(var action:inputData.getActions()) {
-            switch (action.getType()) {
-                case "change page" -> {
-                    Page page;
-                    if(action.getPage().equals("logout")) {
-                         page = new Logout();
-                    } else {
-                         page = switch (currentPage.getName()) {
-                            case "start" -> new Start();
-                            case "login" -> new Login();
-                            case "register" -> new Register();
-                            default -> new Page();
-                        };
-                    }
-                    VisitorDestination visitor = new VisitPageDestination();
-//                    System.out.println(page.getName());
-                    page.acceptDestination(visitor, dataBase, currentPage, action.getPage(), output);
-                }
-                case "on page" -> {
-                    Page page = new Page();
-                    if (!currentPage.isAuth()) {
-                        if (currentPage.getName().equals("login")) {
-                            Login login = new Login();
-                            if (!login.canDoAction(action.getFeature())) {
-                                // error: unavailable feature
-                                OutputError err = ErrorFactory.standardError(dataBase);
-                                output.addPOJO(err);
-                                return;
-                            }
-                            page = login;
-                        }
-                        if (currentPage.getName().equals("register")) {
-                            Register register = new Register();
-                            if (!register.canDoAction(action.getFeature())) {
-                                // error: unavailable feature
-                                OutputError err = ErrorFactory.standardError(dataBase);
-                                output.addPOJO(err);
-                                return;
-                            }
-                            page = register;
-                        }
-                    } else {
-                        if (action.getFeature().equals("logout")) {
-                            Logout logout = new Logout();
-                            page = logout;
-                        }
-                    }
-//                    System.out.println("visitor, " + page.getName());
-                    VisitorAction v = new VisitPagesAction();
-                    page.acceptAction(v, dataBase, currentPage, action, output);
-                }
+            Page page;
+                page = switch (currentPage.getName()) {
+                    case "start" -> new Start();
+                    case "login" -> new Login();
+                    case "register" -> new Register();
+                    case "home auth" -> new Home();
+                    case "movies" -> new Movies();
+                    case "see details" -> new Details();
+                    default -> new Logout();
+                };
+
+            if(action.getType().equals("change page")) {
+                VisitorDestination visitor = new VisitPageDestination();
+                page.acceptDestination(visitor, dataBase, currentPage, action, output);
+            } else {
+                VisitorAction v = new VisitPagesAction();
+                page.acceptAction(v, dataBase, currentPage, action, output);
             }
         }
     }

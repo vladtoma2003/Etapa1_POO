@@ -1,11 +1,12 @@
 package fileio;
 
 import java.util.ArrayList;
+
 //@JsonIgnoreProperties({"users", "movies", "actions"})
 public final class Input {
     private ArrayList<Userio> users;
     private ArrayList<Movieio> movies;
-    private ArrayList<Action> actions;
+    private ArrayList<Actionio> actions;
 
     public Input() {
     }
@@ -26,11 +27,12 @@ public final class Input {
         this.movies = movies;
     }
 
-    public ArrayList<Action> getActions() {
+    public ArrayList<Actionio> getActions() {
         return actions;
     }
 
-    public void setActions(ArrayList<Action> actions) {
+    public void setActions(ArrayList<Actionio> actions) {
         this.actions = actions;
     }
+
 }

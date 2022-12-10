@@ -8,6 +8,16 @@ public class DataBase {
     private ArrayList<Movie> currentMoviesList = new ArrayList<>();
     private User loggedUser = null;
 
+    public Movie getCurrentMovie() {
+        return currentMovie;
+    }
+
+    public void setCurrentMovie(Movie currentMovie) {
+        this.currentMovie = currentMovie;
+    }
+
+    private Movie currentMovie;
+
     public boolean existsUser(User user) {
         return users.stream()
                 .anyMatch(o -> o.equals(user));
