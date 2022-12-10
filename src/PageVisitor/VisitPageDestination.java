@@ -10,7 +10,6 @@ import fileio.Actionio;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Filter;
 
 public class VisitPageDestination implements VisitorDestination {
     @Override
@@ -22,7 +21,6 @@ public class VisitPageDestination implements VisitorDestination {
     public void visit(Start start, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         String Destination = action.getPage();
         if (Arrays.stream(start.getDestinations()).noneMatch(o -> o.equals(Destination))) {
-            System.out.println("eroare?");
             OutputError err = ErrorFactory.standardError(dataBase);
             output.addPOJO(err);
             currentPage.setName("start");
@@ -107,7 +105,8 @@ public class VisitPageDestination implements VisitorDestination {
             return;
         }
         if (Destination.equals("see details")) {
-            if(dataBase.getCurrentMoviesList().isEmpty()) {
+
+            if (dataBase.getCurrentMoviesList().isEmpty()) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 currentPage.setName("movies");
@@ -116,6 +115,12 @@ public class VisitPageDestination implements VisitorDestination {
             dataBase.getCurrentMoviesList().stream()
                     .filter(o -> o.getName().equals(action.getMovie()))
                     .forEach(dataBase::setCurrentMovie);
+            if (dataBase.getCurrentMovie() == null) {
+                OutputError stdError = ErrorFactory.standardError(dataBase);
+                output.addPOJO(stdError);
+                currentPage.setName("movies");
+                return;
+            }
             OutputError err = ErrorFactory.success(dataBase, dataBase.getCurrentMovie());
             output.addPOJO(err);
         }
@@ -126,6 +131,18 @@ public class VisitPageDestination implements VisitorDestination {
     public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         String Destination = action.getPage();
         if (!details.canGoThere(Destination)) {
+            OutputError err = ErrorFactory.standardError(dataBase);
+            output.addPOJO(err);
+            currentPage.setName("home auth");
+            return;
+        }
+        currentPage.setName(Destination);
+    }
+
+    @Override
+    public void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+        String Destination = action.getPage();
+        if (!upgrades.canGoThere(Destination)) {
             OutputError err = ErrorFactory.standardError(dataBase);
             output.addPOJO(err);
             currentPage.setName("home auth");

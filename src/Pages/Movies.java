@@ -30,25 +30,26 @@ public class Movies extends Page {
     }
 
     public void filter(DataBase dataBase, Filterio filter) {
+        dataBase.setCurrentMoviesList(new ArrayList<>());
+        for (var movie : dataBase.getAvailableMovies()) {
+            dataBase.getCurrentMoviesList().add(MovieFactory.newMovie(movie));
+        }
+        FilterCountryOut.filterCountry(dataBase);
         if (dataBase.getCurrentMoviesList().isEmpty()) {
             return;
         }
-        FilterCountryOut.filterCountry(dataBase);
         ArrayList<Movie> filteredMovies = new ArrayList<>();
-        ArrayList<Movie> temp = new ArrayList<>();
-        for (var movie : dataBase.getCurrentMoviesList()) {
-            filteredMovies.add(MovieFactory.newMovie(movie));
-        }
         // las doar actorii si genre-urile necesare
-        if (!filter.getContains().getActors().isEmpty()) {
-            filteredMovies.stream()
-                    .filter(o -> !(o.getActors().contains(filter.getContains().getActors())))
-                    .forEach(filteredMovies::remove);
+        if (filter.getContains().getActors() != null) {
+            dataBase.getCurrentMoviesList().stream()
+                    .filter(o -> o.getActors().contains(filter.getContains().getActors()))
+                    .forEach(p -> filteredMovies.add(MovieFactory.newMovie(p)));
         }
-        if (!filter.getContains().getGenre().isEmpty()) {
+        ArrayList<Movie> filteredGenre = new ArrayList<>();
+        if (filter.getContains().getGenre() != null) {
             filteredMovies.stream()
-                    .filter(o -> !(o.getGenres().contains(filter.getContains().getGenre())))
-                    .forEach(filteredMovies::remove);
+                    .filter(o -> o.getGenres().contains(filter.getContains().getGenre()))
+                    .forEach(p -> filteredGenre.add(MovieFactory.newMovie(p)));
         }
         if (filter.getSort().getRating().equals("decreasing")) {
             filteredMovies.sort((o1, o2) -> o2.compareTo(o1));

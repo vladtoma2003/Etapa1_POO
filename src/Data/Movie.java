@@ -1,6 +1,10 @@
 package Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
+
+@JsonIgnoreProperties({"totalRatin"})
 
 public class Movie {
     private String name;
@@ -12,7 +16,8 @@ public class Movie {
 
     private Integer numLikes;
     private Integer numRatings;
-    private Double rating;
+    private double rating;
+    private Integer totalRatin;
 
     public boolean equals(Movie obj) {
         boolean a = true;
@@ -23,25 +28,26 @@ public class Movie {
     }
 
     public int compareTo(Movie o) {
-        if(this.compareRating(o) == 0) {
+        if (this.compareRating(o) == 0) {
             return this.compareDuration(o);
         }
         return this.compareRating(o);
     }
 
     public int compareRating(Movie o) {
-        if(rating > o.getRating()) {
+        if (rating > o.getRating()) {
             return 1;
-        } else if(o.getRating() < rating) {
+        } else if (o.getRating() < rating) {
             return -1;
         } else {
             return 0;
         }
     }
+
     public int compareDuration(Movie o) {
-        if(duration > o.getDuration()) {
+        if (duration > o.getDuration()) {
             return 1;
-        } else if(o.getDuration() > duration) {
+        } else if (o.getDuration() > duration) {
             return -1;
         } else {
             return 0;
@@ -112,12 +118,20 @@ public class Movie {
         this.numRatings = numRatings;
     }
 
-    public Double getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public Integer getTotalRatin() {
+        return totalRatin;
+    }
+
+    public void setTotalRatin(Integer totalRatin) {
+        this.totalRatin = totalRatin;
     }
 
     @Override

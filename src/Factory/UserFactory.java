@@ -15,7 +15,7 @@ public class UserFactory {
         newUser.getCredentials().setAccountType(user.getCredentials().getAccountType());
         newUser.setTokensCount(0);
         newUser.setNumFreePremiumMovies(15);
-        newUser.getCredentials().setIntBalance(user.getCredentials().getIntBalance());
+        newUser.getCredentials().setIntBalance(Integer.parseInt(newUser.getCredentials().getBalance()));
         return newUser;
     }
 
@@ -29,7 +29,7 @@ public class UserFactory {
         newUser.getCredentials().setAccountType(credentials.getAccountType());
         newUser.setTokensCount(0);
         newUser.setNumFreePremiumMovies(15);
-        newUser.getCredentials().setIntBalance(credentials.getIntBalance());
+        newUser.getCredentials().setIntBalance(0);
         return newUser;
     }
 
@@ -41,7 +41,7 @@ public class UserFactory {
         newUser.getCredentials().setBalance(user.getCredentials().getBalance());
         newUser.getCredentials().setCountry(user.getCredentials().getCountry());
         newUser.getCredentials().setAccountType(user.getCredentials().getAccountType());
-        newUser.setTokensCount(0);
+        newUser.setTokensCount(user.getTokensCount());
         newUser.setNumFreePremiumMovies(user.getNumFreePremiumMovies());
         newUser.getCredentials().setIntBalance(user.getCredentials().getIntBalance());
         return newUser;

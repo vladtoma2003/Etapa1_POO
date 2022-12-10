@@ -15,6 +15,7 @@ public class MovieFactory {
         newMovie.setNumLikes(0);
         newMovie.setNumRatings(0);
         newMovie.setRating((double) 0);
+        newMovie.setTotalRatin(0);
         return newMovie;
     }
 
@@ -29,6 +30,7 @@ public class MovieFactory {
         newMovie.setNumRatings(movie.getNumRatings());
         newMovie.setRating(movie.getRating());
         newMovie.setNumLikes(movie.getNumLikes());
+        newMovie.setTotalRatin(movie.getTotalRatin());
         return newMovie;
     }
 }

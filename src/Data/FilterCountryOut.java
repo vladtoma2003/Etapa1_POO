@@ -6,17 +6,14 @@ import java.util.ArrayList;
 
 public class FilterCountryOut {
     public static void filterCountry(DataBase database) {
-        ArrayList<Movie> filteredMovies = new ArrayList<>();
-        Boolean canWatch = true;
+        ArrayList<Movie> movies = new ArrayList<>();
         for(var movie:database.getAvailableMovies()) {
-            if(movie.getCountriesBanned().contains(database.getLoggedUser().getCredentials().getCountry())) {
-                canWatch = false;
-            }
-            if(canWatch) {
-                filteredMovies.add(MovieFactory.newMovie(movie));
-            }
-            canWatch = true;
+            movies.add(MovieFactory.newMovie(movie));
         }
+        ArrayList<Movie> filteredMovies = new ArrayList<>();
+        movies.stream()
+                .filter(o -> !o.getCountriesBanned().contains(database.getLoggedUser().getCredentials().getCountry()))
+                .forEach(filteredMovies::add);
         database.setCurrentMoviesList(filteredMovies);
     }
 }

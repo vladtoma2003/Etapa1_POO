@@ -20,12 +20,14 @@ public class Actions {
                     case "home auth" -> new Home();
                     case "movies" -> new Movies();
                     case "see details" -> new Details();
+                    case "upgrades" -> new Upgrades();
                     default -> new Logout();
                 };
-
+//            System.out.println("before:" + currentPage.getName());
             if(action.getType().equals("change page")) {
                 VisitorDestination visitor = new VisitPageDestination();
                 page.acceptDestination(visitor, dataBase, currentPage, action, output);
+//                System.out.println("after change:" + currentPage.getName());
             } else {
                 VisitorAction v = new VisitPagesAction();
                 page.acceptAction(v, dataBase, currentPage, action, output);

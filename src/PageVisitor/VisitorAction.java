@@ -22,4 +22,6 @@ public interface VisitorAction {
 
     void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output);
 
+    void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output);
+
 }
