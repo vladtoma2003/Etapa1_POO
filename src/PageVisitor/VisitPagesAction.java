@@ -93,15 +93,15 @@ public class VisitPagesAction implements VisitorAction {
         if(!details.canDoAction(action.getFeature())) {
             OutputError stdError = ErrorFactory.standardError(dataBase);
             output.addPOJO(stdError);
-            currentPage.setName("details");
+            currentPage.setName("see details");
             return;
         }
         if(action.getFeature().equals("purchase")) {
-            Movie movie = dataBase.getMovieFromCurrentList(action.getMovie());
+            Movie movie = dataBase.getMovieFromCurrentList(dataBase.getCurrentMovie());
             if(movie == null) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("details");
+                currentPage.setName("see details");
                 return;
             }
             if(dataBase.getLoggedUser().getNumFreePremiumMovies() > 0) {
@@ -111,7 +111,7 @@ public class VisitPagesAction implements VisitorAction {
             } else {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("details");
+                currentPage.setName("see details");
                 return;
             }
             dataBase.getLoggedUser().getPurchasedMovies().add(movie);
@@ -119,38 +119,38 @@ public class VisitPagesAction implements VisitorAction {
             output.addPOJO(err);
         } else if(action.getFeature().equals("watch")) {
             if(!dataBase.getLoggedUser().getPurchasedMovies().stream()
-                    .anyMatch(o ->o.getName().startsWith(action.getMovie()))) {
+                    .anyMatch(o ->o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("details");
+                currentPage.setName("see details");
                 return;
             }
-            Movie movie = dataBase.getPurchasedMovies(action.getMovie());
+            Movie movie = dataBase.getPurchasedMovies(dataBase.getCurrentMovie());
             dataBase.getLoggedUser().getWatchedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         } else if(action.getFeature().equals("like")) {
             if(!dataBase.getLoggedUser().getWatchedMovies().stream()
-                    .anyMatch(o -> o.getName().startsWith(action.getMovie()))) {
+                    .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("details");
+                currentPage.setName("see details");
                 return;
             }
-            Movie movie = dataBase.getWatchedMovies(action.getMovie());
+            Movie movie = dataBase.getWatchedMovies(dataBase.getCurrentMovie());
             movie.setNumLikes(movie.getNumLikes() + 1);
-            dataBase.getLoggedUser().getWatchedMovies().add(MovieFactory.newMovie(movie));
+            dataBase.getLoggedUser().getLikedMovies().add(MovieFactory.newMovie(movie));
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         } else if(action.getFeature().equals("rate")) {
             if(!dataBase.getLoggedUser().getWatchedMovies().stream()
-                    .anyMatch(o -> o.getName().startsWith(action.getMovie()))) {
+                    .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("details");
+                currentPage.setName("see details");
                 return;
             }
-            Movie movie = dataBase.getWatchedMovies(action.getMovie());
+            Movie movie = dataBase.getWatchedMovies(dataBase.getCurrentMovie());
             movie.setNumRatings(movie.getNumRatings() + 1);
             movie.setTotalRatin(movie.getTotalRatin() + action.getRate());
             movie.setRating((movie.getTotalRatin()/movie.getNumRatings()));
@@ -176,9 +176,7 @@ public class VisitPagesAction implements VisitorAction {
             dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() + Integer.parseInt(action.getCount()));
             dataBase.getLoggedUser().getCredentials().setIntBalance(dataBase.getLoggedUser().getCredentials().getIntBalance() - Integer.parseInt(action.getCount()));
             dataBase.getLoggedUser().getCredentials().setBalance(Integer.toString(dataBase.getLoggedUser().getCredentials().getIntBalance()));
-            OutputError err = ErrorFactory.success(dataBase);
-            output.addPOJO(err);
-        } else {
+        } else { // buy premium account
             if(dataBase.getLoggedUser().getTokensCount() < 10) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
@@ -186,10 +184,6 @@ public class VisitPagesAction implements VisitorAction {
             }
             dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 10);
             dataBase.getLoggedUser().getCredentials().setAccountType("premium");
-            System.out.println(dataBase.getLoggedUser());
-            OutputError err = ErrorFactory.success(dataBase);
-            System.out.println(err.getCurrentUser().getTokensCount() + err.getCurrentUser().getCredentials().getAccountType());
-            output.addPOJO(err);
         }
     }
 

@@ -11,7 +11,7 @@ public class ErrorFactory {
     public static OutputError standardError(DataBase dataBase) {
         OutputError newError = new OutputError();
         newError.setError("Error");
-        newError.setCurrentMoviesList(dataBase.getCurrentMoviesList());
+        newError.setCurrentMoviesList(new ArrayList<>());
         return newError;
     }
 

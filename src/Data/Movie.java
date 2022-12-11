@@ -13,11 +13,10 @@ public class Movie {
     private ArrayList<String> genres;
     private ArrayList<String> actors;
     private ArrayList<String> countriesBanned;
-
-    private Integer numLikes;
-    private Integer numRatings;
+    private int numLikes;
+    private int numRatings;
     private double rating;
-    private Integer totalRatin;
+    private int totalRatin;
 
     public boolean equals(Movie obj) {
         boolean a = true;
@@ -102,19 +101,19 @@ public class Movie {
         this.countriesBanned = countriesBanned;
     }
 
-    public Integer getNumLikes() {
+    public int getNumLikes() {
         return numLikes;
     }
 
-    public void setNumLikes(Integer numLikes) {
+    public void setNumLikes(int numLikes) {
         this.numLikes = numLikes;
     }
 
-    public Integer getNumRatings() {
+    public int getNumRatings() {
         return numRatings;
     }
 
-    public void setNumRatings(Integer numRatings) {
+    public void setNumRatings(int numRatings) {
         this.numRatings = numRatings;
     }
 
@@ -126,11 +125,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Integer getTotalRatin() {
+    public int getTotalRatin() {
         return totalRatin;
     }
 
-    public void setTotalRatin(Integer totalRatin) {
+    public void setTotalRatin(int totalRatin) {
         this.totalRatin = totalRatin;
     }
 

@@ -1,5 +1,6 @@
 package Data;
 
+import Factory.MovieFactory;
 import fileio.Credentials;
 
 import java.util.ArrayList;
@@ -20,6 +21,24 @@ public class User {
 
     public User() {
 
+    }
+    public void addMovies(User oldUser) {
+//        purchasedMovies = new ArrayList<>();
+//        watchedMovies = new ArrayList<>();
+//        likedMovies = new ArrayList<>();
+//        ratedMovies = new ArrayList<>();
+        for(var movie:oldUser.getPurchasedMovies()) {
+            purchasedMovies.add(MovieFactory.newMovie(movie));
+        }
+        for(var movie:oldUser.getLikedMovies()) {
+            likedMovies.add(MovieFactory.newMovie(movie));
+        }
+        for(var movie:oldUser.getRatedMovies()) {
+            ratedMovies.add(MovieFactory.newMovie(movie));
+        }
+        for(var movie:oldUser.getWatchedMovies()) {
+            watchedMovies.add(MovieFactory.newMovie(movie));
+        }
     }
 
     public Credentials getCredentials() {

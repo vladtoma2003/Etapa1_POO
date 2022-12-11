@@ -9,17 +9,16 @@ public class DataBase {
     private ArrayList<Movie> availableMovies = new ArrayList<>();
     private ArrayList<Movie> currentMoviesList = new ArrayList<>();
     private User loggedUser = null;
-    private Movie currentMovie = null;
+    private String currentMovie = null;
 
 
-    public Movie getCurrentMovie() {
+    public String getCurrentMovie() {
         return currentMovie;
     }
 
-    public void setCurrentMovie(Movie currentMovie) {
+    public void setCurrentMovie(String currentMovie) {
         this.currentMovie = currentMovie;
     }
-
 
     public boolean existsUser(User user) {
         return users.stream()
@@ -41,16 +40,26 @@ public class DataBase {
     public Movie getMovieFromCurrentList(String name) {
         for (var movie : currentMoviesList) {
             if (movie.getName().startsWith(name)) {
-                return MovieFactory.newMovie(movie);
+//                return MovieFactory.newMovie(movie);
+                return movie;
             }
         }
         return null;
     }
+//    public Movie getRefrenceCurrentList(String name) {
+//        for (var movie : currentMoviesList) {
+//            if (movie.getName().startsWith(name)) {
+//                return movie;
+//            }
+//        }
+//        return null;
+//    }
 
     public Movie getPurchasedMovies(String name) {
         for (var movie : loggedUser.getPurchasedMovies()) {
             if (movie.getName().startsWith(name)) {
-                return MovieFactory.newMovie(movie);
+//                return MovieFactory.newMovie(movie);
+                return movie;
             }
         }
         return null;
@@ -59,6 +68,7 @@ public class DataBase {
     public Movie getWatchedMovies(String name) {
         for (var movie : loggedUser.getWatchedMovies()) {
             if (movie.getName().startsWith(name)) {
+//                return MovieFactory.newMovie(movie);
                 return movie;
             }
         }

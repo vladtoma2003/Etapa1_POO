@@ -1,8 +1,11 @@
 package Factory;
 
+import Data.Movie;
 import Data.User;
 import fileio.Credentials;
 import fileio.Userio;
+
+import java.util.ArrayList;
 
 public class UserFactory {
     public static User newUser(Userio user) {
@@ -41,6 +44,7 @@ public class UserFactory {
         newUser.getCredentials().setBalance(user.getCredentials().getBalance());
         newUser.getCredentials().setCountry(user.getCredentials().getCountry());
         newUser.getCredentials().setAccountType(user.getCredentials().getAccountType());
+        newUser.addMovies(user);
         newUser.setTokensCount(user.getTokensCount());
         newUser.setNumFreePremiumMovies(user.getNumFreePremiumMovies());
         newUser.getCredentials().setIntBalance(user.getCredentials().getIntBalance());

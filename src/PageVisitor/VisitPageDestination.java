@@ -104,24 +104,23 @@ public class VisitPageDestination implements VisitorDestination {
             currentPage.setName("home auth");
             return;
         }
+        FilterCountryOut.filterCountry(dataBase);
         if (Destination.equals("see details")) {
-
+            if (dataBase.getCurrentMoviesList().isEmpty()) {
+                OutputError stdError = ErrorFactory.standardError(dataBase);
+                output.addPOJO(stdError);
+                currentPage.setName("see details");
+                return;
+            }
+            movies.search(dataBase, action.getMovie());
             if (dataBase.getCurrentMoviesList().isEmpty()) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 currentPage.setName("movies");
                 return;
             }
-            dataBase.getCurrentMoviesList().stream()
-                    .filter(o -> o.getName().equals(action.getMovie()))
-                    .forEach(dataBase::setCurrentMovie);
-            if (dataBase.getCurrentMovie() == null) {
-                OutputError stdError = ErrorFactory.standardError(dataBase);
-                output.addPOJO(stdError);
-                currentPage.setName("movies");
-                return;
-            }
-            OutputError err = ErrorFactory.success(dataBase, dataBase.getCurrentMovie());
+            dataBase.setCurrentMovie(action.getMovie());
+            OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         }
         currentPage.setName(Destination);
@@ -136,6 +135,11 @@ public class VisitPageDestination implements VisitorDestination {
             currentPage.setName("home auth");
             return;
         }
+        if(Destination.equals("movies")) {
+            FilterCountryOut.filterCountry(dataBase);
+            OutputError err = ErrorFactory.success(dataBase);
+            output.addPOJO(err);
+        }
         currentPage.setName(Destination);
     }
 
@@ -147,6 +151,11 @@ public class VisitPageDestination implements VisitorDestination {
             output.addPOJO(err);
             currentPage.setName("home auth");
             return;
+        }
+        if(Destination.equals("movies")) {
+            FilterCountryOut.filterCountry(dataBase);
+            OutputError err = ErrorFactory.success(dataBase);
+            output.addPOJO(err);
         }
         currentPage.setName(Destination);
     }
