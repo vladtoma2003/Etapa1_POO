@@ -1,11 +1,14 @@
 package Data;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+@JsonIgnoreProperties({"errCode"})
 public class OutputError {
     private String error;
     private ArrayList<Movie> currentMoviesList;
     private User currentUser;
+    private int errCode = 0;
 
     public String getError() {
         return error;
@@ -29,6 +32,14 @@ public class OutputError {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public int getErrCode() {
+        return errCode;
+    }
+
+    public void setErrCode(int errCode) {
+        this.errCode = errCode;
     }
 
     @Override
