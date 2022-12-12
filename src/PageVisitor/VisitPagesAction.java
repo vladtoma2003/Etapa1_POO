@@ -17,12 +17,6 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Start start, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(!start.canDoAction(action.getFeature())) {
-            OutputError stdError = ErrorFactory.standardError(dataBase);
-            output.addPOJO(stdError);
-            currentPage.setName("start");
-            return;
-        }
     }
 
     @Override
@@ -35,7 +29,7 @@ public class VisitPagesAction implements VisitorAction {
             currentPage.setName("start");
             return;
         }
-        dataBase.setLoggedUser(UserFactory.newUser(dataBase.getCurrentUser(us)));
+        dataBase.setLoggedUser(dataBase.getCurrentUser(us));
         currentPage.setAuth(true);
         currentPage.setName("home auth");
         OutputError err = ErrorFactory.success(dataBase);
@@ -62,23 +56,11 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Home home, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(!home.canDoAction(action.getFeature())) {
-            OutputError stdError = ErrorFactory.standardError(dataBase);
-            output.addPOJO(stdError);
-            currentPage.setName("home auth");
-        }
     }
 
     @Override
     public void visit(Movies movies, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(!movies.canDoAction(action.getFeature())) {
-            OutputError stdError = ErrorFactory.standardError(dataBase);
-            output.addPOJO(stdError);
-            currentPage.setName("movies");
-            return;
-        }
         if(action.getFeature().equals("search")) {
-            FilterCountryOut.filterCountry(dataBase);
             movies.search(dataBase, action.getStartsWith());
         } else if(action.getFeature().equals("filter")) {
             movies.filter(dataBase, action.getFilters());
@@ -90,29 +72,20 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        int price = 2;
-        if(!details.canDoAction(action.getFeature())) {
-            OutputError stdError = ErrorFactory.standardError(dataBase);
-            output.addPOJO(stdError);
-            currentPage.setName("see details");
-            return;
-        }
         if(action.getFeature().equals("purchase")) {
             Movie movie = dataBase.getMovieFromCurrentList(dataBase.getCurrentMovie());
             if(movie == null) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
                 return;
             }
             if(dataBase.getLoggedUser().getNumFreePremiumMovies() > 0) {
                 dataBase.getLoggedUser().setNumFreePremiumMovies(dataBase.getLoggedUser().getNumFreePremiumMovies() - 1);
-            } else if(dataBase.getLoggedUser().getTokensCount() < price) {
-                dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - price);
+            } else if(dataBase.getLoggedUser().getTokensCount() >= 2) {
+                dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
             } else {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
                 return;
             }
             dataBase.getLoggedUser().getPurchasedMovies().add(movie);
@@ -123,7 +96,6 @@ public class VisitPagesAction implements VisitorAction {
                     .anyMatch(o ->o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
                 return;
             }
             Movie movie = dataBase.getPurchasedMovies(dataBase.getCurrentMovie());
@@ -135,12 +107,11 @@ public class VisitPagesAction implements VisitorAction {
                     .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
                 return;
             }
             Movie movie = dataBase.getWatchedMovies(dataBase.getCurrentMovie());
             movie.setNumLikes(movie.getNumLikes() + 1);
-            dataBase.getLoggedUser().getLikedMovies().add(MovieFactory.newMovie(movie));
+            dataBase.getLoggedUser().getLikedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         } else if(action.getFeature().equals("rate")) {
@@ -165,11 +136,6 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(!upgrades.canDoAction(action.getFeature())) {
-            OutputError stdError = ErrorFactory.standardError(dataBase);
-            output.addPOJO(stdError);
-            return;
-        }
         FilterCountryOut.filterCountry(dataBase);
         if(action.getFeature().equals("buy tokens")) {
             if(dataBase.getLoggedUser().getCredentials().getIntBalance() < Integer.parseInt(action.getCount())) {

@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Actionio;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class VisitPageDestination implements VisitorDestination {
     @Override
@@ -19,14 +18,7 @@ public class VisitPageDestination implements VisitorDestination {
 
     @Override
     public void visit(Start start, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (Arrays.stream(start.getDestinations()).noneMatch(o -> o.equals(Destination))) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("start");
-            return;
-        }
-        if (Destination.equals("login")) {
+        if (action.getPage().equals("login")) {
             currentPage.setName("login");
         } else {
             currentPage.setName("register");
@@ -35,21 +27,12 @@ public class VisitPageDestination implements VisitorDestination {
 
     @Override
     public void visit(Login login, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (!currentPage.getName().equals("start")
-                && Arrays.stream(login.getDestinations()).noneMatch(o -> o.equals(Destination))) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("start");
-            return;
-        }
-        currentPage.setName(Destination);
+        currentPage.setName(action.getPage());
         FilterCountryOut.filterCountry(dataBase);
     }
 
     @Override
     public void visit(Logout logout, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
         if (dataBase.getLoggedUser() == null) {
             OutputError err = ErrorFactory.standardError(dataBase);
             output.addPOJO(err);
@@ -63,53 +46,30 @@ public class VisitPageDestination implements VisitorDestination {
 
     @Override
     public void visit(Register register, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (Arrays.stream(register.getDestinations()).noneMatch(o -> o.equals(Destination))) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("start");
-            return;
-        }
-        currentPage.setName(Destination);
-        FilterCountryOut.filterCountry(dataBase);
+        currentPage.setName(action.getPage());
     }
 
     @Override
     public void visit(Home home, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (!home.canGoThere(Destination)) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("home auth");
-            return;
-        }
-        if (Destination.equals("movies")) {
+        if (action.getPage().equals("movies")) {
             FilterCountryOut.filterCountry(dataBase);
-//            dataBase.setCurrentMoviesList(dataBase.getAvailableMovies());
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         }
-        currentPage.setName(Destination);
-        if (Destination.equals("logout")) {
+        currentPage.setName(action.getPage());
+        if (action.getPage().equals("logout")) {
             VisitorDestination v = new VisitPageDestination();
             Logout l = new Logout();
             l.acceptDestination(v, dataBase, currentPage, action, output);
         } else { // upgrades
-            currentPage.setName(Destination);
+            currentPage.setName(action.getPage());
         }
     }
 
     @Override
     public void visit(Movies movies, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (!movies.canGoThere(Destination)) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("movies");
-            return;
-        }
-        FilterCountryOut.filterCountry(dataBase);
-        if (Destination.equals("see details")) {
+        if (action.getPage().equals("see details")) {
+            FilterCountryOut.filterCountry(dataBase);
             if (dataBase.getCurrentMoviesList().isEmpty()) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
@@ -126,9 +86,11 @@ public class VisitPageDestination implements VisitorDestination {
             dataBase.setCurrentMovie(action.getMovie());
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
+        } else if(action.getPage().equals("movies")) {
+            FilterCountryOut.filterCountry(dataBase);
         }
-        currentPage.setName(Destination);
-        if(Destination.equals("logout")) {
+        currentPage.setName(action.getPage());
+        if(action.getPage().equals("logout")) {
             VisitorDestination v = new VisitPageDestination();
             Logout l = new Logout();
             l.acceptDestination(v, dataBase, currentPage, action, output);
@@ -137,20 +99,13 @@ public class VisitPageDestination implements VisitorDestination {
 
     @Override
     public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (!details.canGoThere(Destination)) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("home auth");
-            return;
-        }
-        if(Destination.equals("movies")) {
+        if(action.getPage().equals("movies")) {
             FilterCountryOut.filterCountry(dataBase);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         }
-        currentPage.setName(Destination);
-        if(Destination.equals("logout")) {
+        currentPage.setName(action.getPage());
+        if(action.getPage().equals("logout")) {
             VisitorDestination v = new VisitPageDestination();
             Logout l = new Logout();
             l.acceptDestination(v, dataBase, currentPage, action, output);
@@ -159,19 +114,17 @@ public class VisitPageDestination implements VisitorDestination {
 
     @Override
     public void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        String Destination = action.getPage();
-        if (!upgrades.canGoThere(Destination)) {
-            OutputError err = ErrorFactory.standardError(dataBase);
-            output.addPOJO(err);
-            currentPage.setName("home auth");
-            return;
-        }
-        if(Destination.equals("movies")) {
+        if(action.getPage().equals("movies")) {
             FilterCountryOut.filterCountry(dataBase);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         }
-        currentPage.setName(Destination);
+        currentPage.setName(action.getPage());
+        if(action.getPage().equals("logout")) {
+            VisitorDestination v = new VisitPageDestination();
+            Logout l = new Logout();
+            l.acceptDestination(v, dataBase, currentPage, action, output);
+        }
     }
 
 

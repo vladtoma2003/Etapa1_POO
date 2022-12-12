@@ -5,86 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ab99c48-0a2f-4c96-96ad-f773132cff90" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/checkstyle_8_36_2_all.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/checkstyle_8_36_2_all.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Etapa1_POO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Etapa1_POO.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_4.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_7.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_10.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/inputs/basic_10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/inputs/basic_8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/inputs/basic_9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_8.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checker/resources/out/ceva.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/out/ceva.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_10.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_4.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_7.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_9.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checkstyle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkstyle.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Actions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/checkstyle.sh" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/checkstyle.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/poo_checks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/poo_checks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/proiect1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/proiect1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proiect1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/proiect1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Page.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/FilterCountryOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/FilterCountryOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/OutputError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/OutputError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory/ErrorFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/ErrorFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory/MovieFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/MovieFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory/UserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/UserFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitPageDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitPageDestination.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitPagesAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitPagesAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitorAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitorAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitorDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitorDestination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Details.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Logout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Movies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Movies.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Upgrades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Upgrades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/CheckStyleConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/checker/CheckStyleConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/Checkstyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/checker/Checkstyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/checkstyle.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/checker/checkstyle.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/poo_checks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/checker/poo_checks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Actionio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Actionio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Containsio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Containsio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Credentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Credentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Filterio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Filterio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Movieio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Movieio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Sortio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Sortio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileio/Userio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileio/Userio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proiect1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/proiect1.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +70,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Test">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Etapa1_POO" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="Etapa1_POO" />
@@ -153,6 +94,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Test (1)" />
       </list>
     </recent_temporary>
@@ -182,7 +124,10 @@
       <workItem from="1670759048470" duration="5959000" />
       <workItem from="1670827829648" duration="111000" />
       <workItem from="1670829742262" duration="3534000" />
-      <workItem from="1670835274271" duration="1628000" />
+      <workItem from="1670835274271" duration="1725000" />
+      <workItem from="1670847909468" duration="2345000" />
+      <workItem from="1670852847122" duration="134000" />
+      <workItem from="1670871446341" duration="2037000" />
     </task>
     <servers />
   </component>

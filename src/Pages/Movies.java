@@ -17,11 +17,12 @@ import java.util.Arrays;
 
 public class Movies extends Page {
     private final static String name = "movies";
-    private final static String destinations[] = {"home auth", "see details", "logout"};
+    private final static String destinations[] = {"home auth", "see details", "logout", "movies"};
     private final static String actions[] = {"search", "filter"};
 
     public void search(DataBase dataBase, String startsWith) {
         ArrayList<Movie> searchedMovie = new ArrayList<>();
+        FilterCountryOut.filterCountry(dataBase);
         dataBase.getCurrentMoviesList().stream()
                 .filter(o -> o.getName().startsWith(startsWith))
                 .forEach(searchedMovie::add);
@@ -30,10 +31,6 @@ public class Movies extends Page {
     }
 
     public void filter(DataBase dataBase, Filterio filter) {
-//        dataBase.setCurrentMoviesList(new ArrayList<>());
-//        for (var movie : dataBase.getAvailableMovies()) {
-//            dataBase.getCurrentMoviesList().add(MovieFactory.newMovie(movie));
-//        }
         FilterCountryOut.filterCountry(dataBase);
         if (dataBase.getCurrentMoviesList().isEmpty()) {
             return;
@@ -46,11 +43,18 @@ public class Movies extends Page {
                         .filter(o -> o.getActors().contains(filter.getContains().getActors()))
                         .forEach(p -> filteredMovies.add(MovieFactory.newMovie(p)));
             }
+            boolean genre = false;
             ArrayList<Movie> filteredGenre = new ArrayList<>();
             if (filter.getContains().getGenre() != null) {
+                genre = true;
                 filteredMovies.stream()
                         .filter(o -> o.getGenres().contains(filter.getContains().getGenre()))
                         .forEach(p -> filteredGenre.add(MovieFactory.newMovie(p)));
+            }
+            if(genre) {
+                dataBase.setCurrentMoviesList(filteredGenre);
+            } else {
+                dataBase.setCurrentMoviesList(filteredMovies);
             }
         }
         if (filter.getSort() != null) {

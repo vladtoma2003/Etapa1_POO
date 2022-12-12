@@ -14,6 +14,14 @@ public class Page {
         return auth;
     }
 
+    public boolean canGoThere(String Destination) {
+        return false;
+    }
+
+    public boolean canDoAction(String Destination) {
+        return false;
+    }
+
     public void acceptAction(VisitorAction visitor, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, action, output);
     }

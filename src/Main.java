@@ -35,7 +35,7 @@ public class Main {
         }
 
         Actions.Commands(dataBase, currenPage, inputData, output);
-        //TODO: eroare la sort, e prost facut trebuie refacut
+        //TODO: rate, movie->movie(cred ca e gata asta)
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(outPath), output);

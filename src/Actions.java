@@ -25,10 +25,25 @@ public class Actions {
                     default -> new Logout();
                 };
             if(action.getType().equals("change page")) {
+//                System.out.println(page.getName() + action.getPage());
+                if(!page.canGoThere(action.getPage())) {
+                    OutputError stdError = ErrorFactory.standardError(dataBase);
+                    output.addPOJO(stdError);
+                    if(currentPage.getName().equals("login") || currentPage.getName().equals("register")) {
+                        currentPage.setName("start");
+                    }
+                    continue;
+                }
                 VisitorDestination visitor = new VisitPageDestination();
                 page.acceptDestination(visitor, dataBase, currentPage, action, output);
 //                System.out.println("changed to " + currentPage.getName());
             } else {
+//                System.out.println("feature:" + action.getFeature());
+                if(!page.canDoAction(action.getFeature())) {
+                    OutputError stdError = ErrorFactory.standardError(dataBase);
+                    output.addPOJO(stdError);
+                    continue;
+                }
                 VisitorAction v = new VisitPagesAction();
                 page.acceptAction(v, dataBase, currentPage, action, output);
             }
