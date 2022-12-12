@@ -39,6 +39,11 @@
       <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_8.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/ref/basic_9.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checkstyle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkstyle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Actions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/checkstyle.sh" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/checkstyle.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/poo_checks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/checker/poo_checks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/proiect1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/proiect1.iml" afterDir="false" />
@@ -177,9 +182,7 @@
       <workItem from="1670759048470" duration="5959000" />
       <workItem from="1670827829648" duration="111000" />
       <workItem from="1670829742262" duration="3534000" />
-      <workItem from="1670835274271" duration="1725000" />
-      <workItem from="1670847909468" duration="2345000" />
-      <workItem from="1670852847122" duration="134000" />
+      <workItem from="1670835274271" duration="1628000" />
     </task>
     <servers />
   </component>

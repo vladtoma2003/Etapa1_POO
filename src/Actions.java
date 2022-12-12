@@ -6,7 +6,6 @@ import PageVisitor.VisitPagesAction;
 import PageVisitor.VisitorAction;
 import PageVisitor.VisitorDestination;
 import Pages.*;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Input;
 
@@ -34,6 +33,5 @@ public class Actions {
                 page.acceptAction(v, dataBase, currentPage, action, output);
             }
         }
-
     }
 }
