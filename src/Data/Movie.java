@@ -27,8 +27,8 @@ public class Movie {
     }
 
     public int compareTo(Movie o) {
-        if (this.compareRating(o) == 0) {
-            return this.compareDuration(o);
+        if (this.compareDuration(o) == 0) {
+            return this.compareRating(o);
         }
         return this.compareRating(o);
     }
@@ -36,7 +36,7 @@ public class Movie {
     public int compareRating(Movie o) {
         if (rating > o.getRating()) {
             return 1;
-        } else if (o.getRating() < rating) {
+        } else if (o.getRating() > rating) {
             return -1;
         } else {
             return 0;

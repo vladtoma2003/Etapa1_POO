@@ -8,7 +8,7 @@ public class FilterCountryOut {
     public static void filterCountry(DataBase database) {
         ArrayList<Movie> movies = new ArrayList<>();
         for(var movie:database.getAvailableMovies()) {
-            movies.add(MovieFactory.newMovie(movie));
+            movies.add(movie);
         }
         ArrayList<Movie> filteredMovies = new ArrayList<>();
         movies.stream()

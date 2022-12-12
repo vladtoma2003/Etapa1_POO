@@ -44,6 +44,7 @@ public class VisitPageDestination implements VisitorDestination {
             return;
         }
         currentPage.setName(Destination);
+        FilterCountryOut.filterCountry(dataBase);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class VisitPageDestination implements VisitorDestination {
             return;
         }
         currentPage.setName(Destination);
+        FilterCountryOut.filterCountry(dataBase);
     }
 
     @Override
@@ -92,6 +94,8 @@ public class VisitPageDestination implements VisitorDestination {
             VisitorDestination v = new VisitPageDestination();
             Logout l = new Logout();
             l.acceptDestination(v, dataBase, currentPage, action, output);
+        } else { // upgrades
+            currentPage.setName(Destination);
         }
     }
 
@@ -101,7 +105,7 @@ public class VisitPageDestination implements VisitorDestination {
         if (!movies.canGoThere(Destination)) {
             OutputError err = ErrorFactory.standardError(dataBase);
             output.addPOJO(err);
-            currentPage.setName("home auth");
+            currentPage.setName("movies");
             return;
         }
         FilterCountryOut.filterCountry(dataBase);
@@ -109,7 +113,7 @@ public class VisitPageDestination implements VisitorDestination {
             if (dataBase.getCurrentMoviesList().isEmpty()) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
+                currentPage.setName("movies");
                 return;
             }
             movies.search(dataBase, action.getMovie());
@@ -124,6 +128,11 @@ public class VisitPageDestination implements VisitorDestination {
             output.addPOJO(err);
         }
         currentPage.setName(Destination);
+        if(Destination.equals("logout")) {
+            VisitorDestination v = new VisitPageDestination();
+            Logout l = new Logout();
+            l.acceptDestination(v, dataBase, currentPage, action, output);
+        }
     }
 
     @Override
@@ -141,6 +150,11 @@ public class VisitPageDestination implements VisitorDestination {
             output.addPOJO(err);
         }
         currentPage.setName(Destination);
+        if(Destination.equals("logout")) {
+            VisitorDestination v = new VisitPageDestination();
+            Logout l = new Logout();
+            l.acceptDestination(v, dataBase, currentPage, action, output);
+        }
     }
 
     @Override

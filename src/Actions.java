@@ -13,6 +13,7 @@ public class Actions {
     public static void Commands (DataBase dataBase, Page currentPage, Input inputData, ArrayNode output){
         for(var action:inputData.getActions()) {
             Page page;
+//            System.out.println(currentPage.getName());
                 page = switch (currentPage.getName()) {
                     case "start" -> new Start();
                     case "login" -> new Login();
@@ -26,6 +27,7 @@ public class Actions {
             if(action.getType().equals("change page")) {
                 VisitorDestination visitor = new VisitPageDestination();
                 page.acceptDestination(visitor, dataBase, currentPage, action, output);
+//                System.out.println("changed to " + currentPage.getName());
             } else {
                 VisitorAction v = new VisitPagesAction();
                 page.acceptAction(v, dataBase, currentPage, action, output);

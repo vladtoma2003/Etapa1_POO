@@ -78,6 +78,7 @@ public class VisitPagesAction implements VisitorAction {
             return;
         }
         if(action.getFeature().equals("search")) {
+            FilterCountryOut.filterCountry(dataBase);
             movies.search(dataBase, action.getStartsWith());
         } else if(action.getFeature().equals("filter")) {
             movies.filter(dataBase, action.getFilters());
@@ -89,7 +90,7 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        int price = 10;
+        int price = 2;
         if(!details.canDoAction(action.getFeature())) {
             OutputError stdError = ErrorFactory.standardError(dataBase);
             output.addPOJO(stdError);
@@ -155,8 +156,11 @@ public class VisitPagesAction implements VisitorAction {
             movie.setTotalRatin(movie.getTotalRatin() + action.getRate());
             movie.setRating((movie.getTotalRatin()/movie.getNumRatings()));
             dataBase.getLoggedUser().getRatedMovies().add(movie);
+            OutputError err = ErrorFactory.success(dataBase);
+            output.addPOJO(err);
 
         }
+
     }
 
     @Override
