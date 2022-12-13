@@ -23,6 +23,10 @@ public class User {
 
     }
     public void addMovies(User oldUser) {
+//        purchasedMovies = new ArrayList<>();
+//        watchedMovies = new ArrayList<>();
+//        likedMovies = new ArrayList<>();
+//        ratedMovies = new ArrayList<>();
         for(var movie:oldUser.getPurchasedMovies()) {
             purchasedMovies.add(MovieFactory.newMovie(movie));
         }
