@@ -69,11 +69,12 @@ public class VisitPageDestination implements VisitorDestination {
     @Override
     public void visit(Movies movies, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         if (action.getPage().equals("see details")) {
-            FilterCountryOut.filterCountry(dataBase);
+//            FilterCountryOut.filterCountry(dataBase);
             if (dataBase.getCurrentMoviesList().isEmpty()) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
                 return;
             }
             movies.search(dataBase, action.getMovie());
@@ -88,6 +89,9 @@ public class VisitPageDestination implements VisitorDestination {
             output.addPOJO(err);
         } else if(action.getPage().equals("movies")) {
             FilterCountryOut.filterCountry(dataBase);
+            OutputError err = ErrorFactory.success(dataBase);
+            output.addPOJO(err);
+            return;
         }
         currentPage.setName(action.getPage());
         if(action.getPage().equals("logout")) {

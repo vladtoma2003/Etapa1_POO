@@ -22,7 +22,6 @@ public class Movies extends Page {
 
     public void search(DataBase dataBase, String startsWith) {
         ArrayList<Movie> searchedMovie = new ArrayList<>();
-        FilterCountryOut.filterCountry(dataBase);
         dataBase.getCurrentMoviesList().stream()
                 .filter(o -> o.getName().startsWith(startsWith))
                 .forEach(searchedMovie::add);
@@ -35,36 +34,23 @@ public class Movies extends Page {
         if (dataBase.getCurrentMoviesList().isEmpty()) {
             return;
         }
-        ArrayList<Movie> filteredMovies = dataBase.getCurrentMoviesList();
         // las doar actorii si genre-urile necesare
         if (filter.getContains() != null) {
             if (filter.getContains().getActors() != null) {
-                dataBase.getCurrentMoviesList().stream()
-                        .filter(o -> o.getActors().contains(filter.getContains().getActors()))
-                        .forEach(p -> filteredMovies.add(MovieFactory.newMovie(p)));
+                dataBase.getCurrentMoviesList().removeIf(o -> !o.getActors().containsAll(filter.getContains().getActors()));
             }
-            boolean genre = false;
-            ArrayList<Movie> filteredGenre = new ArrayList<>();
-            if (filter.getContains().getGenre() != null) {
-                genre = true;
-                filteredMovies.stream()
-                        .filter(o -> o.getGenres().contains(filter.getContains().getGenre()))
-                        .forEach(p -> filteredGenre.add(MovieFactory.newMovie(p)));
-            }
-            if(genre) {
-                dataBase.setCurrentMoviesList(filteredGenre);
-            } else {
-                dataBase.setCurrentMoviesList(filteredMovies);
+            if(filter.getContains().getGenre() != null) {
+                dataBase.getCurrentMoviesList().removeIf(o -> !o.getGenres().containsAll(filter.getContains().getGenre()));
             }
         }
         if (filter.getSort() != null) {
             if (filter.getSort().getDuration() != null) {
                 if (filter.getSort().getRating().equals("increasing")
                         && filter.getSort().getDuration().equals("increasing")) {
-                    filteredMovies.sort((o1, o2) -> o1.compareTo(o2));
+                    dataBase.getCurrentMoviesList().sort((o1, o2) -> o1.compareTo(o2));
                 } else if (filter.getSort().getRating().equals("increasing")
                         && filter.getSort().getDuration().equals("decreasing")) {
-                    filteredMovies.sort((o1, o2) -> {
+                    dataBase.getCurrentMoviesList().sort((o1, o2) -> {
                         if (o1.compareDuration(o2) == 0) {
                             return o1.compareRating(o2);
                         }
@@ -72,17 +58,23 @@ public class Movies extends Page {
                     });
                 } else if (filter.getSort().getRating().equals("decreasing")
                         && filter.getSort().getDuration().equals("increasing")) {
-                    filteredMovies.sort(((o1, o2) -> {
+                    dataBase.getCurrentMoviesList().sort(((o1, o2) -> {
                         if (o1.compareDuration(o2) == 0) {
                             return o2.compareRating(o1);
                         }
                         return o1.compareDuration(o2);
                     }));
                 } else {
-                    filteredMovies.sort((o1, o2) -> o2.compareTo(o1));
+                    dataBase.getCurrentMoviesList().sort((o1, o2) -> o2.compareTo(o1));
+                }
+            } else {
+                if(filter.getSort().equals("increasing")) {
+                    dataBase.getCurrentMoviesList().sort((o1, o2) -> o2.compareRating(o1));
+                } else {
+                    dataBase.getCurrentMoviesList().sort((p1, p2) -> p1.compareRating(p2));
                 }
             }
-            dataBase.setCurrentMoviesList(filteredMovies);
+            dataBase.setCurrentMoviesList(dataBase.getCurrentMoviesList());
         }
 
     }

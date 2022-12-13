@@ -2,7 +2,6 @@ package PageVisitor;
 
 import Data.*;
 import Factory.ErrorFactory;
-import Factory.MovieFactory;
 import Factory.UserFactory;
 import Pages.*;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -60,9 +59,10 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Movies movies, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(action.getFeature().equals("search")) {
+        if (action.getFeature().equals("search")) {
+            FilterCountryOut.filterCountry(dataBase);
             movies.search(dataBase, action.getStartsWith());
-        } else if(action.getFeature().equals("filter")) {
+        } else if (action.getFeature().equals("filter")) {
             movies.filter(dataBase, action.getFilters());
         }
         OutputError err = ErrorFactory.success(dataBase);
@@ -72,41 +72,62 @@ public class VisitPagesAction implements VisitorAction {
 
     @Override
     public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
-        if(action.getFeature().equals("purchase")) {
+        if (action.getFeature().equals("purchase")) {
             Movie movie = dataBase.getMovieFromCurrentList(dataBase.getCurrentMovie());
-            if(movie == null) {
+            if (movie == null) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
+                currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
                 return;
             }
-            if(dataBase.getLoggedUser().getNumFreePremiumMovies() > 0) {
-                dataBase.getLoggedUser().setNumFreePremiumMovies(dataBase.getLoggedUser().getNumFreePremiumMovies() - 1);
-            } else if(dataBase.getLoggedUser().getTokensCount() >= 2) {
-                dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
+            if (dataBase.getLoggedUser().getCredentials().getAccountType().equals("premium")) {
+                if (dataBase.getLoggedUser().getNumFreePremiumMovies() > 0) {
+                    dataBase.getLoggedUser().setNumFreePremiumMovies(dataBase.getLoggedUser().getNumFreePremiumMovies() - 1);
+                } else if (dataBase.getLoggedUser().getTokensCount() >= 2) {
+                    dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
+                } else {
+                    OutputError stdError = ErrorFactory.standardError(dataBase);
+                    output.addPOJO(stdError);
+                    currentPage.setName("movies");
+                    FilterCountryOut.filterCountry(dataBase);
+                    return;
+                }
             } else {
-                OutputError stdError = ErrorFactory.standardError(dataBase);
-                output.addPOJO(stdError);
-                return;
+                if (dataBase.getLoggedUser().getTokensCount() >= 2) {
+                    dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
+                } else {
+                    OutputError stdError = ErrorFactory.standardError(dataBase);
+                    output.addPOJO(stdError);
+                    currentPage.setName("movies");
+                    FilterCountryOut.filterCountry(dataBase);
+                    return;
+                }
             }
             dataBase.getLoggedUser().getPurchasedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
-        } else if(action.getFeature().equals("watch")) {
-            if(!dataBase.getLoggedUser().getPurchasedMovies().stream()
-                    .anyMatch(o ->o.getName().startsWith(dataBase.getCurrentMovie()))) {
+        } else if (action.getFeature().equals("watch")) {
+            if (!dataBase.getLoggedUser().getPurchasedMovies().stream()
+                    .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
+                FilterCountryOut.filterCountry(dataBase);
+                currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
                 return;
             }
             Movie movie = dataBase.getPurchasedMovies(dataBase.getCurrentMovie());
             dataBase.getLoggedUser().getWatchedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
-        } else if(action.getFeature().equals("like")) {
-            if(!dataBase.getLoggedUser().getWatchedMovies().stream()
+        } else if (action.getFeature().equals("like")) {
+            if (!dataBase.getLoggedUser().getWatchedMovies().stream()
                     .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
+                currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
                 return;
             }
             Movie movie = dataBase.getWatchedMovies(dataBase.getCurrentMovie());
@@ -114,22 +135,29 @@ public class VisitPagesAction implements VisitorAction {
             dataBase.getLoggedUser().getLikedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
-        } else if(action.getFeature().equals("rate")) {
-            if(!dataBase.getLoggedUser().getWatchedMovies().stream()
+        } else if (action.getFeature().equals("rate")) {
+            if (action.getRate() < 0 || action.getRate() > 5) {
+                OutputError stdError = ErrorFactory.standardError(dataBase);
+                output.addPOJO(stdError);
+                currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
+                return;
+            }
+            if (!dataBase.getLoggedUser().getWatchedMovies().stream()
                     .anyMatch(o -> o.getName().startsWith(dataBase.getCurrentMovie()))) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
-                currentPage.setName("see details");
+                currentPage.setName("movies");
+                FilterCountryOut.filterCountry(dataBase);
                 return;
             }
             Movie movie = dataBase.getWatchedMovies(dataBase.getCurrentMovie());
             movie.setNumRatings(movie.getNumRatings() + 1);
             movie.setTotalRatin(movie.getTotalRatin() + action.getRate());
-            movie.setRating((movie.getTotalRatin()/movie.getNumRatings()));
+            movie.setRating((movie.getTotalRatin() / movie.getNumRatings()));
             dataBase.getLoggedUser().getRatedMovies().add(movie);
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
-
         }
 
     }
@@ -137,17 +165,18 @@ public class VisitPagesAction implements VisitorAction {
     @Override
     public void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
         FilterCountryOut.filterCountry(dataBase);
-        if(action.getFeature().equals("buy tokens")) {
-            if(dataBase.getLoggedUser().getCredentials().getIntBalance() < Integer.parseInt(action.getCount())) {
-                OutputError err = ErrorFactory.success(dataBase);
+        if (action.getFeature().equals("buy tokens")) {
+            if (Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance()) < Integer.parseInt(action.getCount())) {
+                OutputError err = ErrorFactory.standardError(dataBase);
                 output.addPOJO(err);
                 return;
             }
             dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() + Integer.parseInt(action.getCount()));
-            dataBase.getLoggedUser().getCredentials().setIntBalance(dataBase.getLoggedUser().getCredentials().getIntBalance() - Integer.parseInt(action.getCount()));
+            dataBase.getLoggedUser().getCredentials().setIntBalance(
+                    Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance()) - Integer.parseInt(action.getCount()));
             dataBase.getLoggedUser().getCredentials().setBalance(Integer.toString(dataBase.getLoggedUser().getCredentials().getIntBalance()));
         } else { // buy premium account
-            if(dataBase.getLoggedUser().getTokensCount() < 10) {
+            if (dataBase.getLoggedUser().getTokensCount() < 10) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 return;

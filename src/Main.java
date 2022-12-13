@@ -35,7 +35,6 @@ public class Main {
         }
 
         Actions.Commands(dataBase, currenPage, inputData, output);
-        //TODO: rate, movie->movie(cred ca e gata asta)
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(outPath), output);
