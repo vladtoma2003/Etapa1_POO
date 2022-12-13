@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -21,6 +21,12 @@ public class Movie {
     private double rating;
     private int totalRatin;
 
+    /**
+     * a method that compares two Movie type objects
+     *
+     * @param o
+     * @return
+     */
     public int compareTo(final Movie o) {
         if (this.compareDuration(o) == 0) {
             return this.compareRating(o);
@@ -28,6 +34,12 @@ public class Movie {
         return this.compareRating(o);
     }
 
+    /**
+     * compares the rating of two Movie objects
+     *
+     * @param o
+     * @return
+     */
     public int compareRating(final Movie o) {
         if (rating > o.getRating()) {
             return 1;
@@ -38,6 +50,12 @@ public class Movie {
         }
     }
 
+    /**
+     * Compares the duration of two Movie objects
+     *
+     * @param o
+     * @return
+     */
     public int compareDuration(final Movie o) {
         if (duration > o.getDuration()) {
             return 1;

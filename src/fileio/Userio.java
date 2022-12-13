@@ -8,8 +8,4 @@ import lombok.Setter;
 public class Userio {
     private Credentials credentials;
 
-    public Userio() {
-
-    }
-
 }

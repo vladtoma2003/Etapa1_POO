@@ -11,7 +11,4 @@ public final class Input {
     private ArrayList<Userio> users;
     private ArrayList<Movieio> movies;
     private ArrayList<Actionio> actions;
-
-    public Input() {
-    }
 }

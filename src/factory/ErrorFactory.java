@@ -1,13 +1,19 @@
-package Factory;
+package factory;
 
-import Data.DataBase;
-import Data.Movie;
-import Data.OutputError;
-import Data.User;
+import data.DataBase;
+import data.Movie;
+import data.OutputError;
+import data.User;
 
 import java.util.ArrayList;
 
-public class ErrorFactory {
+public final class ErrorFactory {
+    /**
+     * Creates a standard error. This error is given when an action is done wrong
+     *
+     * @param dataBase
+     * @return
+     */
     public static OutputError standardError(final DataBase dataBase) {
         OutputError newError = new OutputError();
         newError.setError("Error");
@@ -15,6 +21,12 @@ public class ErrorFactory {
         return newError;
     }
 
+    /**
+     * Prints the successful output
+     *
+     * @param dataBase
+     * @return
+     */
     public static OutputError success(final DataBase dataBase) {
         OutputError newError = new OutputError();
         newError.setError(null);
@@ -27,11 +39,22 @@ public class ErrorFactory {
         return newError;
     }
 
-    public static OutputError success(final DataBase dataBase, User user) {
+    /**
+     * same as the one before
+     *
+     * @param dataBase
+     * @param user
+     * @return
+     */
+    public static OutputError success(final DataBase dataBase, final User user) {
         OutputError newError = new OutputError();
         newError.setError(null);
         newError.setCurrentUser(UserFactory.newUser(user));
         newError.setCurrentMoviesList(new ArrayList<>(dataBase.getCurrentMoviesList()));
         return newError;
+    }
+
+    private ErrorFactory() {
+
     }
 }

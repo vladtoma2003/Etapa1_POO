@@ -18,17 +18,4 @@ public final class Credentials {
     public Credentials() {
 
     }
-
-    public Credentials(final String name, final String password, final String accountType, final String country, final String balance) {
-        this.name = name;
-        this.password = password;
-        this.accountType = accountType;
-        this.country = country;
-        this.balance = balance;
-    }
-
-    public Credentials(final String name, final String password) {
-        this.name = name;
-        this.password = password;
-    }
 }

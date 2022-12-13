@@ -1,13 +1,18 @@
-package Factory;
+package factory;
 
-import Data.Movie;
-import Data.User;
+import data.User;
 import fileio.Credentials;
 import fileio.Userio;
 
-import java.util.ArrayList;
+public final class UserFactory {
+    private static final int CINCISPE = 15;
 
-public class UserFactory {
+    /**
+     * Creates a new User type object
+     *
+     * @param user
+     * @return
+     */
     public static User newUser(final Userio user) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
@@ -17,11 +22,18 @@ public class UserFactory {
         newUser.getCredentials().setCountry(user.getCredentials().getCountry());
         newUser.getCredentials().setAccountType(user.getCredentials().getAccountType());
         newUser.setTokensCount(0);
-        newUser.setNumFreePremiumMovies(15);
-        newUser.getCredentials().setIntBalance(Integer.parseInt(newUser.getCredentials().getBalance()));
+        newUser.setNumFreePremiumMovies(CINCISPE);
+        newUser.getCredentials().setIntBalance(Integer.parseInt(newUser
+                .getCredentials().getBalance()));
         return newUser;
     }
 
+    /**
+     * Creates a new User type object
+     *
+     * @param credentials
+     * @return
+     */
     public static User newUser(final Credentials credentials) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
@@ -31,11 +43,17 @@ public class UserFactory {
         newUser.getCredentials().setCountry(credentials.getCountry());
         newUser.getCredentials().setAccountType(credentials.getAccountType());
         newUser.setTokensCount(0);
-        newUser.setNumFreePremiumMovies(15);
+        newUser.setNumFreePremiumMovies(CINCISPE);
         newUser.getCredentials().setIntBalance(0);
         return newUser;
     }
 
+    /**
+     * Creates a new User type object
+     *
+     * @param user
+     * @return
+     */
     public static User newUser(final User user) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
@@ -49,5 +67,9 @@ public class UserFactory {
         newUser.setNumFreePremiumMovies(user.getNumFreePremiumMovies());
         newUser.getCredentials().setIntBalance(user.getCredentials().getIntBalance());
         return newUser;
+    }
+
+    private UserFactory() {
+
     }
 }

@@ -1,9 +1,15 @@
-package Factory;
+package factory;
 
-import Data.Movie;
+import data.Movie;
 import fileio.Movieio;
 
-public class MovieFactory {
+public final class MovieFactory {
+    /**
+     * Creates a new Movie type object
+     *
+     * @param movie
+     * @return
+     */
     public static Movie newMovie(final Movieio movie) {
         Movie newMovie = new Movie();
         newMovie.setName(movie.getName());
@@ -19,6 +25,12 @@ public class MovieFactory {
         return newMovie;
     }
 
+    /**
+     * Creates a new Movie type object
+     *
+     * @param movie
+     * @return
+     */
     public static Movie newMovie(final Movie movie) {
         Movie newMovie = new Movie();
         newMovie.setName(movie.getName());
@@ -32,5 +44,9 @@ public class MovieFactory {
         newMovie.setNumLikes(movie.getNumLikes());
         newMovie.setTotalRatin(movie.getTotalRatin());
         return newMovie;
+    }
+
+    private MovieFactory() {
+
     }
 }

@@ -1,10 +1,10 @@
-package Pages;
+package pages;
 
-import Data.DataBase;
-import Data.FilterCountryOut;
-import Data.Movie;
-import PageVisitor.VisitorAction;
-import PageVisitor.VisitorDestination;
+import data.DataBase;
+import data.FilterCountryOut;
+import data.Movie;
+import pagevisitor.VisitorAction;
+import pagevisitor.VisitorDestination;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Actionio;
 import fileio.Filterio;
@@ -17,10 +17,16 @@ import java.util.Arrays;
 @Setter
 @Getter
 public class Movies extends Page {
-    private final static String name = "movies";
-    private final static String destinations[] = {"home auth", "see details", "logout", "movies"};
-    private final static String actions[] = {"search", "filter"};
+    private final String name = "movies";
+    private final String[] destinations = {"home auth", "see details", "logout", "movies"};
+    private final String[] actions = {"search", "filter"};
 
+    /**
+     * returns the movies that starts with a given string
+     *
+     * @param dataBase
+     * @param startsWith
+     */
     public void search(final DataBase dataBase, final String startsWith) {
         ArrayList<Movie> searchedMovie = new ArrayList<>();
         dataBase.getCurrentMoviesList().stream()
@@ -30,6 +36,12 @@ public class Movies extends Page {
         dataBase.setCurrentMoviesList(searchedMovie);
     }
 
+    /**
+     * filters the movies
+     *
+     * @param dataBase
+     * @param filter
+     */
     public void filter(final DataBase dataBase, final Filterio filter) {
         FilterCountryOut.filterCountry(dataBase);
         if (dataBase.getCurrentMoviesList().isEmpty()) {
@@ -38,10 +50,12 @@ public class Movies extends Page {
         // las doar actorii si genre-urile necesare
         if (filter.getContains() != null) {
             if (filter.getContains().getActors() != null) {
-                dataBase.getCurrentMoviesList().removeIf(o -> !o.getActors().containsAll(filter.getContains().getActors()));
+                dataBase.getCurrentMoviesList().removeIf(
+                        o -> !o.getActors().containsAll(filter.getContains().getActors()));
             }
             if (filter.getContains().getGenre() != null) {
-                dataBase.getCurrentMoviesList().removeIf(o -> !o.getGenres().containsAll(filter.getContains().getGenre()));
+                dataBase.getCurrentMoviesList().removeIf(
+                        o -> !o.getGenres().containsAll(filter.getContains().getGenre()));
             }
         }
         if (filter.getSort() != null) {
@@ -80,19 +94,53 @@ public class Movies extends Page {
 
     }
 
+    /**
+     * Checks if the "action" string is in the actions array
+     *
+     * @param action
+     * @return
+     */
     public boolean canDoAction(final String action) {
         return Arrays.asList(actions).contains(action);
     }
 
+    /**
+     * Checks if the "destination" string is in the destinations array
+     *
+     * @param destination
+     * @return
+     */
     public boolean canGoThere(final String destination) {
         return Arrays.asList(destinations).contains(destination);
     }
 
-    public void acceptDestination(final VisitorDestination visitor, final DataBase dataBase, final Page currentPage, final Actionio Destination, final ArrayNode output) {
-        visitor.visit(this, dataBase, currentPage, Destination, output);
+    /**
+     * accept method for the visitor
+     *
+     * @param visitor
+     * @param dataBase
+     * @param currentPage
+     * @param destination
+     * @param output
+     */
+    public void acceptDestination(final VisitorDestination visitor,
+                                  final DataBase dataBase, final Page currentPage,
+                                  final Actionio destination, final ArrayNode output) {
+        visitor.visit(this, dataBase, currentPage, destination, output);
     }
 
-    public void acceptAction(final VisitorAction visitor, final DataBase dataBase, final Page currentPage, final Actionio action, final ArrayNode output) {
+    /**
+     * accept method for the visitor
+     *
+     * @param visitor
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
+    public void acceptAction(final VisitorAction visitor,
+                             final DataBase dataBase, final Page currentPage,
+                             final Actionio action, final ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, action, output);
     }
 }

@@ -1,25 +1,68 @@
-package PageVisitor;
+package pagevisitor;
 
-import Data.*;
-import Factory.ErrorFactory;
-import Factory.UserFactory;
-import Pages.*;
+import data.DataBase;
+import data.User;
+import data.FilterCountryOut;
+import data.Movie;
+import data.OutputError;
+import factory.ErrorFactory;
+import factory.UserFactory;
+import pages.Page;
+import pages.Upgrades;
+import pages.Logout;
+import pages.Login;
+import pages.Movies;
+import pages.Details;
+import pages.Register;
+import pages.Start;
+import pages.Home;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Actionio;
 
 
 public class VisitPagesAction implements VisitorAction {
+    /**
+     * visitor for Page type
+     *
+     * @param page
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Page page, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Page page, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
 
     }
 
+    /**
+     * visitor for Start type
+     *
+     * @param start
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Start start, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Start start, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
     }
 
+    /**
+     * visitor for Login type
+     * here the user logs into his account
+     *
+     * @param login
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Login login, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Login login, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         User us = UserFactory.newUser(action.getCredentials());
         if (!dataBase.existsUser(us)) {
             // error, user doesn't exist
@@ -35,8 +78,19 @@ public class VisitPagesAction implements VisitorAction {
         output.addPOJO(err);
     }
 
+    /**
+     * visitor for Register type
+     * here the user creates a new account
+     *
+     * @param register
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Register register, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Register register, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         User usr = UserFactory.newUser(action.getCredentials());
         if (dataBase.existsUser(usr)) {
             // error: user already exists
@@ -53,12 +107,34 @@ public class VisitPagesAction implements VisitorAction {
         dataBase.setLoggedUser(usr);
     }
 
+    /**
+     * visitor for Home type
+     * no actions can be done here at the moment
+     *
+     * @param home
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Home home, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Home home, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
     }
 
+    /**
+     * visitor for Movies type
+     * here filter and search actions are done
+     *
+     * @param movies
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Movies movies, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Movies movies, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         if (action.getFeature().equals("search")) {
             FilterCountryOut.filterCountry(dataBase);
             movies.search(dataBase, action.getStartsWith());
@@ -70,8 +146,19 @@ public class VisitPagesAction implements VisitorAction {
 
     }
 
+    /**
+     * visitor for Details type
+     * here purchase, watch, like, rate,  can be done
+     *
+     * @param details
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Details details, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Details details, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         if (action.getFeature().equals("purchase")) {
             Movie movie = dataBase.getMovieFromCurrentList(dataBase.getCurrentMovie());
             if (movie == null) {
@@ -83,9 +170,11 @@ public class VisitPagesAction implements VisitorAction {
             }
             if (dataBase.getLoggedUser().getCredentials().getAccountType().equals("premium")) {
                 if (dataBase.getLoggedUser().getNumFreePremiumMovies() > 0) {
-                    dataBase.getLoggedUser().setNumFreePremiumMovies(dataBase.getLoggedUser().getNumFreePremiumMovies() - 1);
+                    dataBase.getLoggedUser().setNumFreePremiumMovies(
+                            dataBase.getLoggedUser().getNumFreePremiumMovies() - 1);
                 } else if (dataBase.getLoggedUser().getTokensCount() >= 2) {
-                    dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
+                    dataBase.getLoggedUser().setTokensCount(
+                            dataBase.getLoggedUser().getTokensCount() - 2);
                 } else {
                     OutputError stdError = ErrorFactory.standardError(dataBase);
                     output.addPOJO(stdError);
@@ -95,7 +184,8 @@ public class VisitPagesAction implements VisitorAction {
                 }
             } else {
                 if (dataBase.getLoggedUser().getTokensCount() >= 2) {
-                    dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 2);
+                    dataBase.getLoggedUser().setTokensCount(
+                            dataBase.getLoggedUser().getTokensCount() - 2);
                 } else {
                     OutputError stdError = ErrorFactory.standardError(dataBase);
                     output.addPOJO(stdError);
@@ -162,19 +252,34 @@ public class VisitPagesAction implements VisitorAction {
 
     }
 
+    /**
+     * visitor for Upgrade type
+     * here the user can upgrade his account or buy more tokens
+     *
+     * @param upgrades
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Upgrades upgrades, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Upgrades upgrades, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         FilterCountryOut.filterCountry(dataBase);
         if (action.getFeature().equals("buy tokens")) {
-            if (Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance()) < Integer.parseInt(action.getCount())) {
+            if (Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance())
+                    < Integer.parseInt(action.getCount())) {
                 OutputError err = ErrorFactory.standardError(dataBase);
                 output.addPOJO(err);
                 return;
             }
-            dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() + Integer.parseInt(action.getCount()));
+            dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount()
+                    + Integer.parseInt(action.getCount()));
             dataBase.getLoggedUser().getCredentials().setIntBalance(
-                    Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance()) - Integer.parseInt(action.getCount()));
-            dataBase.getLoggedUser().getCredentials().setBalance(Integer.toString(dataBase.getLoggedUser().getCredentials().getIntBalance()));
+                    Integer.parseInt(dataBase.getLoggedUser().getCredentials().getBalance())
+                            - Integer.parseInt(action.getCount()));
+            dataBase.getLoggedUser().getCredentials().setBalance(Integer.toString(
+                    dataBase.getLoggedUser().getCredentials().getIntBalance()));
         } else { // buy premium account
             if (dataBase.getLoggedUser().getTokensCount() < 10) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
@@ -186,8 +291,19 @@ public class VisitPagesAction implements VisitorAction {
         }
     }
 
+    /**
+     * visitor for Logout type
+     * here the platform de-logs the current user
+     *
+     * @param logout
+     * @param dataBase
+     * @param currentPage
+     * @param action
+     * @param output
+     */
     @Override
-    public void visit(Logout logout, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void visit(final Logout logout, final DataBase dataBase,
+                      final Page currentPage, final Actionio action, final ArrayNode output) {
         dataBase.setLoggedUser(null);
         currentPage.setName("start");
         currentPage.setAuth(false);
