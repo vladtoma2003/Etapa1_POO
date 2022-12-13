@@ -2,9 +2,13 @@ package Data;
 
 import Factory.MovieFactory;
 import fileio.Credentials;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class User {
     Credentials credentials;
     private Integer tokensCount;
@@ -14,7 +18,7 @@ public class User {
     ArrayList<Movie> likedMovies = new ArrayList<>();
     ArrayList<Movie> ratedMovies = new ArrayList<>();
 
-    public boolean equals(User obj) {
+    public boolean equals(final User obj) {
         return this.credentials.getName().equals(obj.getCredentials().getName()) &&
                 this.credentials.getPassword().equals(obj.getCredentials().getPassword());
     }
@@ -22,91 +26,19 @@ public class User {
     public User() {
 
     }
-    public void addMovies(User oldUser) {
-//        purchasedMovies = new ArrayList<>();
-//        watchedMovies = new ArrayList<>();
-//        likedMovies = new ArrayList<>();
-//        ratedMovies = new ArrayList<>();
-        for(var movie:oldUser.getPurchasedMovies()) {
+
+    public void addMovies(final User oldUser) {
+        for (var movie : oldUser.getPurchasedMovies()) {
             purchasedMovies.add(MovieFactory.newMovie(movie));
         }
-        for(var movie:oldUser.getLikedMovies()) {
+        for (var movie : oldUser.getLikedMovies()) {
             likedMovies.add(MovieFactory.newMovie(movie));
         }
-        for(var movie:oldUser.getRatedMovies()) {
+        for (var movie : oldUser.getRatedMovies()) {
             ratedMovies.add(MovieFactory.newMovie(movie));
         }
-        for(var movie:oldUser.getWatchedMovies()) {
+        for (var movie : oldUser.getWatchedMovies()) {
             watchedMovies.add(MovieFactory.newMovie(movie));
         }
-    }
-
-    public Credentials getCredentials() {
-        return credentials;
-    }
-
-    public void setCredentials(Credentials credentials) {
-        this.credentials = credentials;
-    }
-
-    public Integer getTokensCount() {
-        return tokensCount;
-    }
-
-    public void setTokensCount(Integer tokensCount) {
-        this.tokensCount = tokensCount;
-    }
-
-    public Integer getNumFreePremiumMovies() {
-        return numFreePremiumMovies;
-    }
-
-    public void setNumFreePremiumMovies(Integer numFreePremiumMovies) {
-        this.numFreePremiumMovies = numFreePremiumMovies;
-    }
-
-    public ArrayList<Movie> getPurchasedMovies() {
-        return purchasedMovies;
-    }
-
-    public void setPurchasedMovies(ArrayList<Movie> purchasedMovies) {
-        this.purchasedMovies = purchasedMovies;
-    }
-
-    public ArrayList<Movie> getWatchedMovies() {
-        return watchedMovies;
-    }
-
-    public void setWatchedMovies(ArrayList<Movie> watchedMovies) {
-        this.watchedMovies = watchedMovies;
-    }
-
-    public ArrayList<Movie> getLikedMovies() {
-        return likedMovies;
-    }
-
-    public void setLikedMovies(ArrayList<Movie> likedMovies) {
-        this.likedMovies = likedMovies;
-    }
-
-    public ArrayList<Movie> getRatedMovies() {
-        return ratedMovies;
-    }
-
-    public void setRatedMovies(ArrayList<Movie> ratedMovies) {
-        this.ratedMovies = ratedMovies;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "credentials=" + credentials +
-                ", tokensCount=" + tokensCount +
-                ", numFreePremiumMovies=" + numFreePremiumMovies +
-                ", purchasedMovies=" + purchasedMovies +
-                ", watchedMovies=" + watchedMovies +
-                ", likedMovies=" + likedMovies +
-                ", ratedMovies=" + ratedMovies +
-                '}';
     }
 }

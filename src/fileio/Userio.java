@@ -1,5 +1,10 @@
 package fileio;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Userio {
     private Credentials credentials;
 
@@ -7,15 +12,4 @@ public class Userio {
 
     }
 
-    public Userio(Credentials credentials) {
-        this.credentials = credentials;
-    }
-
-    public Credentials getCredentials() {
-        return credentials;
-    }
-
-    public void setCredentials(Credentials credentials) {
-        this.credentials = credentials;
-    }
 }

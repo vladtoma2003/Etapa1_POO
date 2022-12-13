@@ -8,7 +8,7 @@ import fileio.Userio;
 import java.util.ArrayList;
 
 public class UserFactory {
-    public static User newUser(Userio user) {
+    public static User newUser(final Userio user) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
         newUser.getCredentials().setName(user.getCredentials().getName());
@@ -22,7 +22,7 @@ public class UserFactory {
         return newUser;
     }
 
-    public static User newUser(Credentials credentials) {
+    public static User newUser(final Credentials credentials) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
         newUser.getCredentials().setName(credentials.getName());
@@ -36,7 +36,7 @@ public class UserFactory {
         return newUser;
     }
 
-    public static User newUser(User user) {
+    public static User newUser(final User user) {
         User newUser = new User();
         newUser.setCredentials(new Credentials());
         newUser.getCredentials().setName(user.getCredentials().getName());

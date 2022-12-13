@@ -4,7 +4,7 @@ import Data.Movie;
 import fileio.Movieio;
 
 public class MovieFactory {
-    public static Movie newMovie(Movieio movie) {
+    public static Movie newMovie(final Movieio movie) {
         Movie newMovie = new Movie();
         newMovie.setName(movie.getName());
         newMovie.setYear(movie.getYear());
@@ -19,7 +19,7 @@ public class MovieFactory {
         return newMovie;
     }
 
-    public static Movie newMovie(Movie movie) {
+    public static Movie newMovie(final Movie movie) {
         Movie newMovie = new Movie();
         newMovie.setName(movie.getName());
         newMovie.setYear(movie.getYear());

@@ -14,12 +14,12 @@ public class DataBase {
     private User loggedUser = null;
     private String currentMovie = null;
 
-    public boolean existsUser(User user) {
+    public boolean existsUser(final User user) {
         return users.stream()
                 .anyMatch(o -> o.equals(user));
     }
 
-    public User getCurrentUser(User user) {
+    public User getCurrentUser(final User user) {
         if (!existsUser(user)) {
             return null;
         }
@@ -31,7 +31,7 @@ public class DataBase {
         return null;
     }
 
-    public Movie getMovieFromCurrentList(String name) {
+    public Movie getMovieFromCurrentList(final String name) {
         for (var movie : currentMoviesList) {
             if (movie.getName().startsWith(name)) {
                 return movie;
@@ -40,7 +40,7 @@ public class DataBase {
         return null;
     }
 
-    public Movie getPurchasedMovies(String name) {
+    public Movie getPurchasedMovies(final String name) {
         for (var movie : loggedUser.getPurchasedMovies()) {
             if (movie.getName().startsWith(name)) {
                 return movie;
@@ -49,7 +49,7 @@ public class DataBase {
         return null;
     }
 
-    public Movie getWatchedMovies(String name) {
+    public Movie getWatchedMovies(final String name) {
         for (var movie : loggedUser.getWatchedMovies()) {
             if (movie.getName().startsWith(name)) {
                 return movie;
