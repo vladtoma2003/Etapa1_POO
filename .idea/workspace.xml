@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ab99c48-0a2f-4c96-96ad-f773132cff90" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_10.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/inputs/basic_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/in/basic_9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/out/ceva.json" beforeDir="false" afterPath="$PROJECT_DIR$/checker/resources/out/ceva.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkstyle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkstyle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Data/FilterCountryOut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/FilterCountryOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/FilterCountryOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitPageDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitPageDestination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PageVisitor/VisitPagesAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PageVisitor/VisitPagesAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Movies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Movies.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +129,7 @@
       <workItem from="1670847909468" duration="2345000" />
       <workItem from="1670852847122" duration="134000" />
       <workItem from="1670871446341" duration="2037000" />
-      <workItem from="1670954901600" duration="3914000" />
+      <workItem from="1670954901600" duration="3614000" />
     </task>
     <servers />
   </component>

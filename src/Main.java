@@ -38,7 +38,7 @@ public class Main {
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(outPath), output);
-//        objectWriter.writeValue(new File("checker/resources/out/ceva.json"), output);
+        objectWriter.writeValue(new File("checker/resources/out/ceva.json"), output);
 
     }
 }
