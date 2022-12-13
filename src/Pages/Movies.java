@@ -3,24 +3,25 @@ package Pages;
 import Data.DataBase;
 import Data.FilterCountryOut;
 import Data.Movie;
-import Data.OutputError;
-import Factory.ErrorFactory;
-import Factory.MovieFactory;
 import PageVisitor.VisitorAction;
 import PageVisitor.VisitorDestination;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Actionio;
 import fileio.Filterio;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@Setter
+@Getter
 public class Movies extends Page {
     private final static String name = "movies";
     private final static String destinations[] = {"home auth", "see details", "logout", "movies"};
     private final static String actions[] = {"search", "filter"};
 
-    public void search(DataBase dataBase, String startsWith) {
+    public void search(final DataBase dataBase, final String startsWith) {
         ArrayList<Movie> searchedMovie = new ArrayList<>();
         dataBase.getCurrentMoviesList().stream()
                 .filter(o -> o.getName().startsWith(startsWith))
@@ -29,7 +30,7 @@ public class Movies extends Page {
         dataBase.setCurrentMoviesList(searchedMovie);
     }
 
-    public void filter(DataBase dataBase, Filterio filter) {
+    public void filter(final DataBase dataBase, final Filterio filter) {
         FilterCountryOut.filterCountry(dataBase);
         if (dataBase.getCurrentMoviesList().isEmpty()) {
             return;
@@ -39,7 +40,7 @@ public class Movies extends Page {
             if (filter.getContains().getActors() != null) {
                 dataBase.getCurrentMoviesList().removeIf(o -> !o.getActors().containsAll(filter.getContains().getActors()));
             }
-            if(filter.getContains().getGenre() != null) {
+            if (filter.getContains().getGenre() != null) {
                 dataBase.getCurrentMoviesList().removeIf(o -> !o.getGenres().containsAll(filter.getContains().getGenre()));
             }
         }
@@ -68,7 +69,7 @@ public class Movies extends Page {
                     dataBase.getCurrentMoviesList().sort((o1, o2) -> o2.compareTo(o1));
                 }
             } else {
-                if(filter.getSort().equals("increasing")) {
+                if (filter.getSort().equals("increasing")) {
                     dataBase.getCurrentMoviesList().sort((o1, o2) -> o2.compareRating(o1));
                 } else {
                     dataBase.getCurrentMoviesList().sort((p1, p2) -> p1.compareRating(p2));
@@ -79,32 +80,19 @@ public class Movies extends Page {
 
     }
 
-    public boolean canDoAction(String action) {
+    public boolean canDoAction(final String action) {
         return Arrays.asList(actions).contains(action);
     }
 
-    public boolean canGoThere(String destination) {
+    public boolean canGoThere(final String destination) {
         return Arrays.asList(destinations).contains(destination);
     }
 
-    public void acceptDestination(VisitorDestination visitor, DataBase dataBase, Page currentPage, Actionio Destination, ArrayNode output) {
+    public void acceptDestination(final VisitorDestination visitor, final DataBase dataBase, final Page currentPage, final Actionio Destination, final ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, Destination, output);
     }
 
-    public void acceptAction(VisitorAction visitor, DataBase dataBase, Page currentPage, Actionio action, ArrayNode output) {
+    public void acceptAction(final VisitorAction visitor, final DataBase dataBase, final Page currentPage, final Actionio action, final ArrayNode output) {
         visitor.visit(this, dataBase, currentPage, action, output);
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public String[] getDestinations() {
-        return destinations;
-    }
-
-    public String[] getActions() {
-        return actions;
     }
 }
