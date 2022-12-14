@@ -1,3 +1,5 @@
+Am folosti design pattern-urile visitor si factory.
+
 Package data:
 
 1) DataBase:
@@ -34,21 +36,7 @@ factory):
    Aceasta clasa creaza un obiect nou de tipul user si il returneaza.
 
 Package fileio:
-Acest package contine toate clasele necesare pentru citirea informatiilor din inputul
-dat de teste.
-
-Package mainprogram:
-
-1) Actions:
-   In aceasta clasa se creaza un obiect de tipul paginii curente si se verifica daca
-   actiunea corecta este de tipul "change page" sau "on page". Daca este de tipul "change page"
-   atunci se verifica daca se poate merge la destinatia ceruta de pe pagina curenta, iar in caz
-   afirmativ se cheama acceptDestination in care se efectueaza actiunea de mutare de pe o pagina
-   pe alta. Daca este de tipul "on page" se verifica daca in pagina curenta exista acitiunea
-   ceruta si in caz afirmativ se cheama acceptAction in care se efectueaza actiunea ceruta pe
-   pagina curenta.
-2) Main:
-   In aceasta clasa se citesc datele din json si se initializeaza database ul.
+Acest package contine toate clasele necesare pentru citirea informatiilor din inputul dat de teste.
 
 Package pages:
 In acest pachet exista toate clasele de tipul Page (de exemplu Login, Register, Logout, ...).
@@ -96,3 +84,16 @@ implementarea tuturor actiunilor.
   schimba tipul contului userului curent la premium.
 - Actiunea "logout": se "sterge" userul curent si se trece pe pagina de start, unde nu este nimeni
   autentificat.
+
+Clase care nu se afla in package:
+
+1) Actions:
+   In aceasta clasa se creaza un obiect de tipul paginii curente si se verifica daca
+   actiunea corecta este de tipul "change page" sau "on page". Daca este de tipul "change page"
+   atunci se verifica daca se poate merge la destinatia ceruta de pe pagina curenta, iar in caz
+   afirmativ se cheama acceptDestination in care se efectueaza actiunea de mutare de pe o pagina
+   pe alta. Daca este de tipul "on page" se verifica daca in pagina curenta exista acitiunea
+   ceruta si in caz afirmativ se cheama acceptAction in care se efectueaza actiunea ceruta pe
+   pagina curenta.
+2) Main:
+   In aceasta clasa se citesc datele din json si se initializeaza database ul.

@@ -6,34 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9ab99c48-0a2f-4c96-96ad-f773132cff90" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPageDestination.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitPagesAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitorAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/PageVisitor/VisitorDestination.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Details.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Details.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Logout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Logout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Movies.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Start.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Upgrades.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Pages/Upgrades.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/mainprogram/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/mainprogram/Actions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mainprogram/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainprogram/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Movies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Movies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Upgrades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Upgrades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagevisitor/VisitPageDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/VisitPageDestination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagevisitor/VisitPagesAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/VisitPagesAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagevisitor/VisitorAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/VisitorAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagevisitor/VisitorDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/VisitorDestination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkstyle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkstyle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/TestType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Etapa1_POO/TestType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/mainprogram/Actions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Etapa1_POO/mainprogram/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainprogram/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainprogram/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +72,7 @@
   </component>
   <component name="RunManager" selected="Application.Test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mainprogram.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Etapa1_POO" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,7 +133,7 @@
       <workItem from="1671018582695" duration="174000" />
       <workItem from="1671050660135" duration="2807000" />
       <workItem from="1671053504659" duration="516000" />
-      <workItem from="1671054036453" duration="3424000" />
+      <workItem from="1671054036453" duration="3889000" />
     </task>
     <servers />
   </component>
