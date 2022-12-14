@@ -226,7 +226,8 @@ public class VisitPagesAction implements VisitorAction {
             OutputError err = ErrorFactory.success(dataBase);
             output.addPOJO(err);
         } else if (action.getFeature().equals("rate")) {
-            if (action.getRate() < 0 || action.getRate() > 5) {
+            final int cinci = 5;
+            if (action.getRate() < 0 || action.getRate() > cinci) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 currentPage.setName("movies");
@@ -281,12 +282,14 @@ public class VisitPagesAction implements VisitorAction {
             dataBase.getLoggedUser().getCredentials().setBalance(Integer.toString(
                     dataBase.getLoggedUser().getCredentials().getIntBalance()));
         } else { // buy premium account
-            if (dataBase.getLoggedUser().getTokensCount() < 10) {
+            final int zece = 10;
+            if (dataBase.getLoggedUser().getTokensCount() < zece) {
                 OutputError stdError = ErrorFactory.standardError(dataBase);
                 output.addPOJO(stdError);
                 return;
             }
-            dataBase.getLoggedUser().setTokensCount(dataBase.getLoggedUser().getTokensCount() - 10);
+            dataBase.getLoggedUser().setTokensCount(
+                    dataBase.getLoggedUser().getTokensCount() - zece);
             dataBase.getLoggedUser().getCredentials().setAccountType("premium");
         }
     }

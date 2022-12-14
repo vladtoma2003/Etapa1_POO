@@ -1,9 +1,6 @@
 Starting audit...
 [ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\checker\CheckStyleConstants.java:3:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
-[ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\pagevisitor\VisitPagesAction.java:229:60: '5' is a magic number. [MagicNumber]
-[ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\pagevisitor\VisitPagesAction.java:284:61: '10' is a magic number. [MagicNumber]
-[ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\pagevisitor\VisitPagesAction.java:289:97: '10' is a magic number. [MagicNumber]
 [ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\Test.java:1: File does not end with a newline. [NewlineAtEndOfFile]
 [ERROR] S:\Facultate\Anul 2\Sem1\POO\Etapa1_POO\.\src\Test.java:10:28: Using the '.*' form of import should be avoided - java.util.concurrent.*. [AvoidStarImport]
 Audit done.
-Checkstyle ends with 6 errors.
+Checkstyle ends with 3 errors.
