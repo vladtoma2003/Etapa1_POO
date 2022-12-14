@@ -3,8 +3,8 @@ package pages;
 import java.util.Arrays;
 
 import data.DataBase;
-import pagevisitor.VisitorAction;
-import pagevisitor.VisitorDestination;
+import visitor.VisitorAction;
+import visitor.VisitorDestination;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.Actionio;
 import lombok.Getter;
